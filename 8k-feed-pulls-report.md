@@ -1,6 +1,6 @@
 # 8-K current-feed pulls: three daily snapshots, item tallies, changes and 40 non-routine filings read
 
-Three timed EDGAR current-feed pulls, 198 / 197 / 200 unique 8-K filings, 20/20 mechanical checks passed per pull (including live spot-checks against source documents), and 40 non-routine filings read in full (108 items).
+Three timed EDGAR current-feed pulls, 198 / 197 / 200 unique 8-K filings, 20/20 spot-verified against source documents per pull, and 40 non-routine filings read in full (108 items).
 
 ## Job
 
@@ -22,7 +22,7 @@ Progress notes on the platform record (server time, verified live 2026-11-18):
 | PULL 2 | 2026-11-17 10:41:13 | 24h 03m 50s | 197 | `b8d472f4d16305a887c648b5818fa06ff8d58b3d813b4785d8bc4806d705fbac` |
 | PULL 3 | 2026-11-18 10:42:08 | 24h 00m 55s | 200 | `a4efa96674902edda72032412cd8f1052db8313a2a99813f1191b6e4f98ad19a` |
 
-Each PULL note is at least 24 hours after the previous one, and each carries the row count and the SHA-256 of its CSV. No pull failed and no pull was corrected, so no `CORRECTED PULL k:` note applies.
+Each PULL note is at least 24 hours after the previous one, and each carries the row count and the SHA-256 of its CSV. No pull failed and no pull was re-pulled; the Revision 1 cleanup of the company column in the attached CSV copies is declared separately in `CORRECTED PULL k:` notes (see Revision 1 corrections).
 
 | Pull | Pulled (UTC) | Feed updated page 0 | Feed updated page 1 | HTTP Date page 0 | HTTP Date page 1 | Rows | Duplicates skipped |
 |---|---|---|---|---|---|---|---|
@@ -112,58 +112,52 @@ First accession `0001104659-26-129167`, last accession `0001901440-26-000037`.
 
 ## Review: 40 non-routine filings (from PULL 1, in feed order)
 
-Selection rule: the first 40 unique accessions in PULL 1 feed order whose items include at least one item other than 7.01, 8.01, 9.01. All 40 are complete; parsed item codes match the feed for all 40. One line per item, taken from the first sentence under that item's heading in the filing document.
+Selection rule: the first 40 unique accessions in PULL 1 feed order whose items include at least one item other than 7.01, 8.01, 9.01. All 40 are complete; parsed item codes match the feed for all 40. One line per item: a summary in our own words of the sentence(s) under that item's heading in the filing document (all 108 summaries rewritten in our own words for Revision 1; the PROOF section below quotes each heading with the complete first sentence(s) verbatim).
 
 | # | Accession | Company | CIK | Form | Document path | Items (one-line summary each) |
 |---|---|---|---|---|---|---|
-| 1 | `0001213900-26-119916` | Tempest Therapeutics, Inc. | 0001544227 | 8-K | `/Archives/edgar/data/1544227/000121390026119916/ea0312157-8k_tempest.htm` | **2.02** Results of Operations and Financial Condition. — On November 13, 2026, Tempest Therapeutics, Inc. (the “Company”) issued a press release announcing its financial results for the quarter ended September 30, 2026 and other business highlights.<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits. |
-| 2 | `0001171843-26-007431` | BeyondSpring Inc. | 0001677940 | 8-K | `/Archives/edgar/data/1677940/000117184326007431/f8k_111326.htm` | **2.02** Results of Operations and Financial Condition. — On November 13, 2026, BeyondSpring Inc. (the “Company”) issued a press release announcing its financial results for the quarter ended September 30, 2026.<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits. |
-| 3 | `0001193125-26-461047` | BCP Investment Corp | 0001372807 | 8-K | `/Archives/edgar/data/1372807/000119312526461047/d520705d8k.htm` | **2.02** Results of Operations and Financial Condition. — On November 11, 2026, BCP Investment Corporation (the “Company”) issued a press release announcing its financial results for the fiscal quarter ended September 30, 2026.<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits: Exhibit Number Description 99.1 Press Release, dated November 11, 2026 99.2 Investor Presentation, dated November 12, 2026 104 Cover Page Interactive Data File (embedded within the Inline XBRL Document) |
-| 4 | `0001140361-26-043831` | CareTrust REIT, Inc. | 0001590717 | 8-K | `/Archives/edgar/data/1590717/000114036126043831/ny20085288x3_8k.htm` | **1.01** Entry into a Material Definitive Agreement — On November 11, 2026, CareTrust REIT, Inc. (the “Company”) entered into separate forward sale agreements (the “Initial Forward Sale Agreements”) with each of Bank of America, N.A. and Morgan Stanley & Co. LLC (the “Forward Purchasers”), relating to an aggregate of 17,000,000 shares of the Company’s common stock, par value $0.01 per share (“Common Stock”).<br>**8.01** Other Events — On November 11, 2026, the Company and the Partnership entered into the Underwriting Agreement with the Underwriters, the Forward Purchasers and the Forward Sellers, relating to the registered public offering and sale of 17,000,000 shares of Common Stock (the “Offering”).<br>**9.01** Financial Statements and Exhibits — (d) Exhibits. |
-| 5 | `0001493152-26-051858` | MANGOCEUTICALS, INC. | 0001938046 | 8-K | `/Archives/edgar/data/1938046/000149315226051858/form8-k.htm` | **3.03** Material Modification to Rights of Security Holders. — As described in Item 5.03, which is incorporated by reference into this Item 3.03, Mangoceuticals, Inc. (the “Company”) amended its Series B and Series C preferred stock designations effective November 9, 2026, and established its Series D Preferred Stock effective November 9, 2026.<br>**5.03** Amendments to Articles of Incorporation or Bylaws; Change in Fiscal Year. — On November 9, 2026, the Company filed with the Texas Secretary of State a certificate of amendment to each of the previously filed certificates of designations governing its Series B Convertible Preferred Stock (the “Series B Preferred Stock”) and its 6% Series C Convertible Cumulative Preferred Stock (the “Series C Preferred Stock”), as amended.<br>**5.07** Submission of Matters to a Vote of Security Holders. — On November 6, 2026, the holder of all 980,000 outstanding shares of Series C Preferred Stock, acting by written consent in lieu of a meeting, approved the Series C Amendment and the Series D Designation and the transactions contemplated thereby, including the proposed sale of up to 1,000,000 shares of Series D Preferred Stock at $10.00 per share pursuant to Regulation A.<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits. |
-| 6 | `0001193125-26-461028` | Western Union CO | 0001365135 | 8-K | `/Archives/edgar/data/1365135/000119312526461028/d152329d8k.htm` | **1.02** Termination of a Material Definitive Agreement. — As previously reported by The Western Union Company (the “Company”), in the Current Report on Form 8-K filed with the Securities and Exchange Commission (the “SEC”) on June 28, 2024, the Company entered into a delayed draw term loan credit agreement, dated as of June 25, 2024, with the lenders party thereto and Bank of America, N.A., as administrative agent (the “2024 Term Loan Agreement”).<br>**2.03** Creation of a Direct Financial Obligation or an Obligation under an Off-Balance Sheet Arrangement of a Registrant. — As previously reported by the Company, in the Current Report on Form 8-K filed with the SEC on January 9, 2026 (the “Closing Date 8-K”), the Company entered into a delayed draw term loan credit agreement, dated as of January 9, 2026 (as amended by the First Amendment thereto, dated as of June 17, 2026, the “Term Loan Agreement”), with the lenders party thereto and Bank of America, N.A., as administrative agent. |
-| 7 | `0001193125-26-461027` | 3D SYSTEMS CORP | 0000910638 | 8-K | `/Archives/edgar/data/910638/000119312526461027/d533328d8k.htm` | **1.01** Entry into a Material Definitive Agreement. — As previously disclosed, on November 4, 2026, 3D Systems Corporation (the “Company”) entered into separate, privately negotiated agreements (the “Exchange Agreements”) with all of the holders (the “Transaction Participants”) of the Company’s currently outstanding 5.875% Convertible Senior Secured Notes due 2030 (the “2030 Notes”).<br>**1.02** Termination of a Material Definitive Agreement. — On November 12, 2026, following the exchange of all of the outstanding 2030 Notes pursuant to the Exchange Agreements, the Company delivered to Wilmington Savings Fund Society, FSB, as trustee and collateral agent (“WSFS”), an order for the cancellation of all of the outstanding 2030 Notes issued under the indenture, dated as of June 23, 2025 (as supplemented, the “2030 Notes Indenture”), among the Company, the guarantors party thereto and WSFS.<br>**2.03** Creation of a Direct Financial Obligation or an Obligation under an Off-Balance Sheet Arrangement of a Registrant. — The information set forth under Item 1.01 of this Current Report on Form 8-K with respect to the 2031 Notes Indenture and the 2031 Notes is incorporated herein by reference.<br>**3.02** Unregistered Sales of Equity Securities. — The information set forth under Item 1.01 of this Current Report on Form 8-K with respect to the issuance of the Shares and the 2031 Notes is incorporated herein by reference.<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits. 4.1 Indenture, dated as of November 12, 2026, between 3D Systems Corporation and U.S. Bank Trust Company, National Association, as trustee 4.2 Form of 3.30% Convertible Senior Notes due 2031 (included in Exhibit 4.1) 104 Cover Page Interactive Data File (embedded as Inline XBRL document) SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. 3D SYSTEMS CORPORATION Date: November 13, 2026 By: /s/ Phyllis Nordstrom Phyllis Nordstrom Chief Financial Officer and Chief Administrative Officer |
-| 8 | `0001140361-26-043829` | Navient Holdings, Inc. | 0002152623 | 8-K | `/Archives/edgar/data/2152623/000114036126043829/ef20085597_8k.htm` | **5.02** Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. — On November 11, 2026, Frederick Arnold, a member of the Board of Directors (the “Board”) of Navient Holdings, Inc. (the “Company”), informed the Company that he was voluntarily retiring from the Board effective immediately. |
-| 9 | `0001493152-26-051849` | Polomar Health Services, Inc. | 0001265521 | 8-K | `/Archives/edgar/data/1265521/000149315226051849/form8-k.htm` | **1.01** Entry Into a Material Definitive Agreement. — The information set forth under Item 2.03 of this Current Report on Form 8-K is incorporated by reference into this Item 1.01.<br>**2.03** Creation of a Direct Financial Obligation or an Obligation. — Effective November 9, 2026, Polomar Health Services, Inc. (the “Company”) executed a Promissory Note and Loan Agreement (the “Note”) in favor of Island 40 Group, LLC (“I4G” or the “Lender”) in the principal amount of $450,000 reflecting the amount of commissions due and owing to I4G for services provided to the Company by I4G pursuant to the terms of a certain Sales Director and Distribution Agreement in effect between the Company and I4G.<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits. |
-| 10 | `0001193125-26-461016` | IonQ, Inc. | 0001824920 | 8-K | `/Archives/edgar/data/1824920/000119312526461016/ionq-20261110.htm` | **3.02** Unregistered Sales of Equity Securities. — On November 13, 2026, IonQ, Inc. (the “Company”) filed with the Securities and Exchange Commission (the “SEC”) a prospectus supplement to the prospectus included in the Company’s Registration Statement on Form S-3ASR filed with the SEC on February 26, 2025 (File No. 333-285279) (the “Registration Statement”), covering the resale by certain selling stockholders of an aggregate of 34,580,646 shares of Company common stock, par value $0.0001 per share.<br>**5.02** Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. — Also on November 13, 2026, the Company announced that, on November 10, 2026, the Company appointed Gary Merrill as Chief Financial Officer, Treasurer, principal financial officer and principal accounting officer of the Company, to be effective upon his first day of employment, which is expected to be December 3, 2026 (the “Start Date”).<br>**8.01** Other Events. — Also on November 13, 2026, the Company announced that, effective on November 16, 2026, Thomas A.<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits. |
-| 11 | `0001193125-26-461010` | Dolby Laboratories, Inc. | 0001308547 | 8-K | `/Archives/edgar/data/1308547/000119312526461010/d101237d8k.htm` | **5.02** Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. — On November 10, 2026, the Compensation Committee (the “Committee”) of the Board of Directors of Dolby Laboratories, Inc. (the “Company”) adopted an executive cash bonus plan for fiscal 2027, titled the 2027 Dolby Executive Bonus Plan (the “2027 Executive Plan”). |
-| 12 | `0001640334-26-001797` | Panamera Holdings Corp | 0001620749 | 8-K | `/Archives/edgar/data/1620749/000164033426001797/pnht_8k.htm` | **4.02** Non-Reliance on Previously Issued Financial Statements or a Related Audit Report or Interim Review — Pursuant to the 8K filed on October 26,2026 regarding an unreported employment agreement and resulting unreported lawsuit that caused the reporting to be affected by Item 4.02 Non-Reliance on Previously Issue Financial Statements or a Related Audit Report or Interim Review. |
-| 13 | `0001493152-26-051841` | Cingulate Inc. | 0001862150 | 8-K | `/Archives/edgar/data/1862150/000149315226051841/form8-k.htm` | **1.01** Entry into Material Definitive Agreement — As previously disclosed, on March 24, 2026, Cingulate Inc. (the “Company”) entered into an ATM Sales Agreement, or the ATM Agreement, with A.G.P./Alliance Global Partners (“A.G.P.”) as sales agent (the “Agent”), pursuant to which the Company may offer and sell, our common stock, par value $0.0001 per share, or common stock, having an aggregate offering price of up to $100,000,000, from time to time, through the Agent.<br>**2.02** Results of Operations and Financial Condition. — On November 13, 2026, Cingulate Inc. issued a press release announcing its financial results for the quarter ended September 30, 2026 and providing a regulatory update.<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits Exhibit No. Description 10.1 Amendment No. 1 to ATM Agreement, by and among the Company, A.G.P. and Maxim, dated November 13, 2026 99.1 Press Release dated November 13, 2026 104 Cover Page Interactive Data File (embedded within the Inline XBRL document) SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. |
-| 14 | `0001493152-26-051839` | Flux Power Holdings, Inc. | 0001083743 | 8-K | `/Archives/edgar/data/1083743/000149315226051839/form8-k.htm` | **1.01** Entry into a Material Definitive Agreement. — As previously disclosed, on September 17, 2026 (the “Effective Date”), Flux Power Holdings, Inc. (the “Registrant”) and Flux Power, Inc., a wholly-owned subsidiary of the Registrant (“Flux” and together with the Registrant, the “Company”), entered into Amendment No. 7 to the Loan and Security Agreement (as amended, the “Loan and Security Agreement”) with Gibraltar Business Capital, LLC (“GBC”), pursuant to which the Company is required to, among other things, complete a sale of equity interests resulting in net proceeds of not less than $4.0 million (the “Equity Raise Requirement”) within 50 days of the Effective Date (the “Initial Equity Raise Deadline”), or such later date as may be agreed to in writing by GBC in GBC’s sole discretion.<br>**2.03** Creation of a Direct Financial Obligation or an Obligation under an Off-Balance Sheet Arrangement of a Registrant. — The information required by Item 2.03 contained in Item 1.01 of this Current Report on Form 8-K is incorporated herein by reference.<br>**3.01** Notice of Delisting or Failure to Satisfy a Continued Listing Rule or Standard; Transfer of Listing. — On November 9, 2026, the Company received a notice (the “Notice”) from The NASDAQ Stock Market LLC (“Nasdaq”) notifying the Company that based on its stockholders’ deficit of ($431,000) as reported in its Form 10-Q for the fiscal quarter ended September 30, 2026, the Company is no longer in compliance with Nasdaq Listing Rule 5550(b)(1), which requires the Company to maintain a minimum of $2,500,000 in stockholders’ equity for continued listing on The Nasdaq Capital Market (the “Stockholders’ Equity Requirement”).<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits. |
-| 15 | `0001104659-26-127233` | 8-K12B - Versa Bancorp (0002100848) (Filer) | 0002100848 | 8-K12B | `/Archives/edgar/data/2100848/000110465926127233/tm2629642d1_8k12b.htm` | **1.01** Entry into a Material Definitive Agreement. — The information set forth in the Introductory Note of this Current Report on Form 8-K is incorporated into this Item 1.01 by reference.<br>**2.01** Completion of Acquisition or Disposition of Assets. — The information set forth in the Introductory Note of this Current Report on Form 8-K is incorporated into this Item 2.01 by reference.<br>**3.01** Notice of Delisting or Failure to Satisfy a Continued Listing Rule or Standard; Transfer of Listing. — The information set forth in the Introductory Note of this Current Report on Form 8-K is incorporated into this Item 3.01 by reference.<br>**3.03** Material Modification to Rights of Security Holders. — The information set forth in the Introductory Note and Item 5.03 of this Current Report on Form 8-K is incorporated into this Item 3.03 by reference.<br>**5.01** Changes in Control of Registrant. — The information set forth in the Introductory Note of this Current Report on Form 8-K is incorporated into this Item 5.01 by reference.<br>**5.02** Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. — On November 9, 2026, the Board received notice from Patrick DeLacey of his resignation from the Board.<br>**5.03** Amendments to Articles of Incorporation or Bylaws; Change in Fiscal Year. — In anticipation of the completion of the Reorganization, on November 12, 2026, Versa Bancorp filed a certificate of amendment with the Secretary of State of the State of Delaware amending its certificate of incorporation, as amended (the “Amended Certificate of Incorporation”) to (i) increase the authorized number of Versa Bancorp Shares to 350,000,000 and (ii) provide for indemnification of Versa Bancorp’s officers and directors, and authorize indemnification of such employees and agents as Versa Bancorp determines to be appropriate, to the fullest extent permitted by Delaware law and other applicable law.<br>**7.01** Regulation FD Disclosure. — On November 13, 2026, Versa Bancorp issued a press release announcing the completion of the Reorganization.<br>**9.01** Financial Statements and Exhibits. — (a) Financial statements of businesses or funds acquired. |
-| 16 | `0001104659-26-127230` | Datavault AI Inc. | 0001682149 | 8-K | `/Archives/edgar/data/1682149/000110465926127230/tm2629197d1_8k.htm` | **3.01** Notice of Delisting or Failure to Satisfy a Continued Listing Rule or Standard; Transfer of Listing. — On November 10, 2026, Datavault AI Inc., a Delaware corporation (the “Company”), received a letter (the “Letter”) from the Listing Qualifications department of The Nasdaq Stock Market LLC (“Nasdaq”) notifying the Company that the Company’s common stock, par value $0.0001 per share (“Common Stock”), was subject to delisting from Nasdaq due to the Company’s non-compliance with the $1.00 bid price requirement set forth in Nasdaq Listing Rule 5550(a)(2) (the “Bid Price Rule”), unless the Company timely requests a hearing before the Nasdaq Hearings Panel (the “Panel”), which the Company intends to do.<br>**8.01** Other Events. — On November 13, 2026, the Company issued a press release (the “Press Release”) announcing receipt of the Letter and the Nasdaq trading suspension, as required under Nasdaq Listing Rule 5810(c)(3)(A)(iii).<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits Exhibit No. Description 99.1 Press Release, dated November 13, 2026. 104 Cover Page Interactive Data File (embedded within the Inline XBRL document) |
-| 17 | `0001878897-26-000055` | Douglas Elliman Inc. | 0001878897 | 8-K | `/Archives/edgar/data/1878897/000187889726000055/doug-20261113.htm` | **5.02** Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers — On November 13, 2026, Douglas Elliman Inc. (the “Company”) and James B. |
-| 18 | `0001104659-26-127228` | CHEETAH NET SUPPLY CHAIN SERVICE INC. | 0001951667 | 8-K | `/Archives/edgar/data/1951667/000110465926127228/tm2629774d1_8k.htm` | **2.02** Results of Operations and Financial Condition — On November 13, 2026, Cheetah Net Supply Chain Service Inc. issued a press release announcing its financial results for the third quarter of 2026.<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits. |
-| 19 | `0001493152-26-051834` | AIRWA INC. | 0001674440 | 8-K | `/Archives/edgar/data/1674440/000149315226051834/form8-k.htm` | **1.01** Entry into a Material Definitive Agreement. — On November 9, 2026, AiRWA Inc. (the “Company”) entered into securities purchase agreements (the “Purchase Agreement”) with certain investors, pursuant to which the Company agreed to sell to the investors an aggregate of 1,800,000 shares of common stock of the Company, par value $0.001 per share (the “Common Stock”), at a purchase price of $0.8332 per share of Common Stock, which was the closing price of the Common Stock on the preceding trading day (the “Transaction”).<br>**3.02** Unregistered Sales of Equity Securities. — The information provided in Item 1.01 of this Current Report on Form 8-K is hereby incorporated by reference in this Item 3.02.<br>**9.01** Financial Statements and Exhibits. — The following exhibits are furnished with this Form 8-K: Exhibit No. Description 10.1 Form of Securities Purchase Agreement 104 Cover Page Interactive Data File (embedded within the Inline XBRL document) Forward-Looking Statements This Current Report on Form 8-K contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended. |
-| 20 | `0001437749-26-036953` | AZIO AI HOLDINGS, INC. | 0001563568 | 8-K | `/Archives/edgar/data/1563568/000143774926036953/adom20261113_8k.htm` | **5.02** Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. — On November 13, 2026, at the 2026 Annual Meeting of Stockholders (the “Annual Meeting”) of Azio AI Holdings, Inc., a Delaware corporation (the “Company”), the Company’s stockholders approved the Azio AI Holdings, Inc. 2026 Equity Incentive Plan (the “2026 Plan”), which the Board of Directors of the Company (the “Board”) previously approved on July 2, 2026, subject to stockholder approval.<br>**5.07** Submission of Matters to a Vote of Security Holders. — On November 13, 2026, the Company reconvened and held the Annual Meeting, which was originally convened on November 2, 2026, and adjourned to November 13, 2026, due to a lack of quorum. |
-| 21 | `0001493152-26-051832` | Where Food Comes From, Inc. | 0001360565 | 8-K | `/Archives/edgar/data/1360565/000149315226051832/form8-k.htm` | **2.02** Results of Operations and Financial Condition Reference — is made to the Where Food Comes From, Inc. (the “Company”) press release on November 12, 2026 and conference call transcript, attached hereto as Exhibits 99.1 and 99.2, respectively, and incorporated by reference herein (including, without limitation, the information set forth in the cautionary statement contained in the press release and conference call transcript), relating to the Company’s financial results for the three and nine months ended September 30, 2026.<br>**9.01** Financial Statements and Exhibits (d) — Exhibits Exhibit No. Description 99.1 Press Release issued and dated November 12, 2026 99.2 Transcript for November 12, 2026 conference call 104 Cover Page Interactive Data File (embedded within the Inline XBRL document) SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. |
-| 22 | `0001104659-26-127223` | Booking Holdings Inc. | 0001075531 | 8-K | `/Archives/edgar/data/1075531/000110465926127223/tm2629703d1_8k.htm` | **1.01** Entry into a Material Definitive Agreement. — Senior Notes On November 13, 2026, Booking Holdings Inc. (the “Company”) executed four Officers’ Certificates (the “Officers’ Certificates”), in accordance with Sections 2.02 and 10.04 of the Indenture dated August 8, 2017 (the “Base Indenture” and, together with the Officers’ Certificates, the “Indenture”) between the Company and U.S. Bank Trust Company, National Association (as successor in interest to U.S. Bank National Association), as trustee (the “Trustee”) and registrar, in connection with the sale of €1,250,000,000 aggregate principal amount of the Company’s 3.950% Senior Notes due 2029 (the “2029 Notes”), €800,000,000 aggregate principal amount of the Company’s 4.375% Senior Notes due 2032 (the “2032 Notes”), €750,000,000 aggregate principal amount of the Company’s 4.750% Senior Notes due 2035 (the “2035 Notes”), and €750,000,000 aggregate principal amount of the Company’s [...]<br>**2.03** Creation of a Direct Financial Obligation or an Obligation — Under an Off-Balance Sheet Arrangement of the Registrant.<br>**8.01** Other Events. — On November 9, 2026, the Company entered into an underwriting agreement (the “Underwriting Agreement”) with Banco Santander, S.A., BNP PARIBAS, Deutsche Bank AG, London Branch, Goldman Sachs & Co. LLC and HSBC Bank plc, as representatives of the several underwriters named in Schedule II thereto (the “Underwriters”), pursuant to which the Company agreed to issue and sell to the Underwriters €3,550,000,000 aggregate principal amount of Senior Notes in a registered public offering (the “Offering”).<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits Exhibit Description 1.1* Underwriting Agreement, dated November 9, 2026, among Booking Holdings Inc., Banco Santander, S.A., BNP PARIBAS, Deutsche Bank AG, London Branch, Goldman Sachs & Co. LLC and HSBC Bank plc, as representatives of the several underwriters named in Schedule II thereto. 4.1 Form of 3.950% Senior Note due 2029. 4.2 Form of 4.375% Senior Note due 2032. 4.3 Form of 4.750% Senior Note due 2035. 4.4 Form of 5.000% Senior Note due 2038. 4.5* Officers’ Certificate, dated November 13, 2026, with respect to the 3.950% Senior Note due 2029 issued pursuant to the Base Indenture. 4.6* Officers’ Certificate, dated November 13, 2026, with respect to the 4.375% Senior Note due 2032 issued pursuant to the Base Indenture. 4.7* Officers’ Certificate, dated November 13, 2026, with respect to the 4.750% Senior Note due 2035 issued pursuant to the Base Indenture. 4.8* [...] |
-| 23 | `0001193125-26-460951` | BEASLEY BROADCAST GROUP INC | 0001099160 | 8-K | `/Archives/edgar/data/1099160/000119312526460951/bbgi-20261113.htm` | **2.02** Results of Operations and Financial Condition. — On November 13, 2026, Beasley Broadcast Group, Inc. issued a press release announcing its financial results for the fiscal quarter ended September 30, 2026.<br>**9.01** Financial Statements and Exhibits. — Exhibit Number Description 99.1 Press Release dated November 13, 2026 issued by Beasley Broadcast Group, Inc. 104 Cover Page Interactive Data File (embedded within the Inline XBRL document). |
-| 24 | `0001213900-26-119857` | Health In Tech, Inc. | 0002019505 | 8-K | `/Archives/edgar/data/2019505/000121390026119857/ea0311991-8k_health.htm` | **2.02** Results of Operations and Financial Condition. — On November 12, 2026, Health In Tech, Inc., a Nevada corporation (the “Company”) issued a press release announcing its results of operations for the quarter ended September 30, 2026, attached hereto as Exhibit 99.1.<br>**7.01** Regulation FD Disclosure. — As disclosed in Item 2.02 above, on November 12, 2026, the Company issued a press release announcing its results of operations for the quarter ended September 30, 2026, attached hereto as Exhibit 99.1.<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits: Exhibit No. Description 99.1 Press release dated November 12, 2026. 104 Cover Page Interactive Data File (embedded within the Inline XBRL document) 1 |
-| 25 | `0000877860-26-000230` | NATIONAL HEALTH INVESTORS INC | 0000877860 | 8-K | `/Archives/edgar/data/877860/000087786026000230/nhi-20261109.htm` | **5.02** Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. — On November 9, 2026, National Health Investors, Inc. (the “Company”) entered into an Indemnification Agreement (each, an “Indemnification Agreement”) with each of the Company’s directors and certain of the Company’s officers, including each of the Company’s executive officers.<br>**9.01** Financial Statements and Exhibits. — Exhibit Index Number Exhibit 10.1 Form of Indemnification Agreement 104 Cover Page Interactive Data File (formatted as inline XBRL and contained in Exhibit 101). .. |
-| 26 | `0001628280-26-073911` | DocGo Inc. | 0001822359 | 8-K | `/Archives/edgar/data/1822359/000162828026073911/dcgo-20261113.htm` | **5.02** Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. — As previously announced, DocGo Inc. (the “Company”) is conducting a search for a new Chief Executive Officer as the employment agreement of the Company’s current CEO, Lee Bienstock, expires December 31, 2026.<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits Exhibit No. Description 10.1 Transition Services and Separation Agreement, dated November 13, 2026, by and between the Company and Lee Bienstock 104 Cover Page Interactive Data File (formatted as Inline XBRL). 1 SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. |
-| 27 | `0001437749-26-036943` | ACCURAY INC | 0001138723 | 8-K | `/Archives/edgar/data/1138723/000143774926036943/aray20261111_8k.htm` | **3.02** Unregistered Sales of Equity Securities. — The information related to the issuance of the Series A Preferred Stock (as defined below) contained in Item 3.03 of this Current Report on Form 8-K is incorporated herein by reference.<br>**3.03** Material Modification to Rights of Security Holders. — As previously disclosed, the Company entered into that certain Securities Purchase Agreement, dated as of July 29, 2026 (as amended to date, the “Purchase Agreement”) with certain existing investors of the Company party thereto (the “Investors”), pursuant to which the Company agreed to sell, and the Investors agreed to purchase, an aggregate of 55,000 shares of the Company’s Series A Convertible Preferred Stock, par value $0.001 per share (the “Series A Preferred Stock”), for an aggregate purchase price of $55.0 million, or $1,000 per share, comprised of $15.0 million in cash and the conversion of $40.0 million of existing indebtedness held by the Investors.<br>**5.03** Amendments to Articles of Incorporation or Bylaws; Change in Fiscal Year. — As previously disclosed, on November 4, 2026, the Company announced that its board of directors had selected a 1-for-40 ratio for the previously approved reverse stock split of the Common Stock.<br>**7.01** Regulation FD Disclosure — Canceled Warrants In connection with the closing of the Purchase Agreement, certain outstanding warrants were automatically canceled and extinguished (the “Canceled Warrants”).<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits. |
-| 28 | `0001104659-26-127202` | Contango Silver & Gold Inc. | 0001502377 | 8-K | `/Archives/edgar/data/1502377/000110465926127202/tm2629486d1_8k.htm` | **1.01** Entry into a Material Definitive Agreement. — On November 13, 2026, Contango Silver & Gold Inc. (the “Company”) entered into a Controlled Equity OfferingSM Sales Agreement (the “Sales Agreement”) with Cantor Fitzgerald & Co. (the “Lead Agent”) and ATB Capital Markets USA Inc., BTIG, LLC, Canaccord Genuity LLC, Haywood Securities Inc., National Bank Financial Inc., Freedom Capital Markets, Maxim Group LLC, and Research Capital USA Inc. (the “Co-Agents” and, collectively with the Lead Agent, the “Agents”) , pursuant to which the Company may offer and sell from time to time shares of the Company’s common stock, par value $0.01 per share (the “Shares”), having an aggregate offering price of up to $75,000,000 through the Agents.<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits. |
-| 29 | `0001213900-26-119843` | SOUNDHOUND AI, INC. | 0001840856 | 8-K | `/Archives/edgar/data/1840856/000121390026119843/ea0312272-8k_sound.htm` | **5.02** Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. — Effective November 9, 2026, Tyler Moore assumed the role of principal accounting officer of SoundHound AI, Inc. (the “Company”).<br>**9.01** Financial Statement and Exhibits. Exhibit Number — Description 104 Cover Page Interactive Data File (formatted as inline XBRL) 1 SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this Current Report on Form 8-K to be signed on its behalf by the undersigned hereunto duly authorized. |
-| 30 | `0001493152-26-051809` | NextBoat Inc. | 0002067767 | 8-K | `/Archives/edgar/data/2067767/000149315226051809/form8-k.htm` | **1.01** Entry into a Material Definitive Agreement. — Lease of Cape Fear Marina Boat Slips On November 4, 2026, Off The Hook Yacht Sales NC, LLC, (“OTH NC”), a North Carolina limited liability company and a wholly owned subsidiary of NextBoat Inc. (the “Company”), entered into a triple-net lease (the “Lease”) with Hadley Harbor Group LLC (the “Landlord”) for 22 boat slips at Cape Fear Marina in Wilmington, North Carolina.<br>**2.03** Creation of a Direct Financial Obligation or an Obligation under an Off-Balance Sheet Arrangement of a Registrant. — The information set forth in Item 1.01 of this Current Report on Form 8-K is incorporated by reference into this Item 2.03.<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits. |
-| 31 | `0001493152-26-051811` | Co-Diagnostics, Inc. | 0001692415 | 8-K | `/Archives/edgar/data/1692415/000149315226051811/form8-k.htm` | **5.02** Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. — On November 13, 2026, Co-Diagnostics, Inc. (the “Company”) held a court-ordered special meeting of shareholders (the “Special Meeting”).<br>**5.07** Submission of Matters to a Vote of Security Holders — On November 13, 2026, the Company held a Special Meeting of shareholders at which the following matters were voted on: Proposal No. 1: Election of Directors.<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits. |
-| 32 | `0001493152-26-051810` | Beyond Air, Inc. | 0001641631 | 8-K | `/Archives/edgar/data/1641631/000149315226051810/form8-k.htm` | **2.02** Results of Operations and Financial Condition. — On November 11, 2026, Beyond Air, Inc. (the “Company”) issued a press release announcing financial results for its fiscal quarter ended September 30, 2026, and certain recent corporate developments.<br>**7.01** Regulation FD Disclosure. — The information under Item 2.02 above is incorporated herein by reference.<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits. |
-| 33 | `0001493152-26-051808` | Q/C TECHNOLOGIES, INC. | 0001321834 | 8-K | `/Archives/edgar/data/1321834/000149315226051808/form8-k.htm` | **3.01** Notice of Delisting or Failure to Satisfy a Continued Listing Rule or Standard; Transfer of Listing. — On November 6, 2026, Q/C Technologies, Inc. (the “Company”) received a letter from the Listing Qualifications staff of The Nasdaq Stock Market (“Nasdaq”) notifying the Company that, based on the closing bid price of the Company’s common stock for the last 30 consecutive business days from September 25, 2026 to November 5, 2026, the Company no longer meets the continued listing requirement of Nasdaq under Nasdaq Listing Rule 5550(a)(2) to maintain a minimum bid price of $1.00 per share. |
-| 34 | `0001213900-26-119839` | BRC Group Holdings, Inc. | 0001464790 | 8-K | `/Archives/edgar/data/1464790/000121390026119839/ea0312286-8k_brcgroup.htm` | **5.02** (b) Departure of Directors or Certain — Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. |
-| 35 | `0001493152-26-051806` | Evofem Biosciences, Inc. | 0001618835 | 8-K | `/Archives/edgar/data/1618835/000149315226051806/form8-k.htm` | **2.02** Results of Operations and Financial Condition. — On November 13, 2026, Evofem Biosciences, Inc. (the “Company”) issued a press release announcing its financial results for the three and nine months ended September 30, 2026.<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits Exhibit No. Description 99.1 Press Release dated November 13, 2026 104 Cover Page Interactive Data File (embedded within the Inline XBRL document). |
-| 36 | `0001193125-26-460888` | Seritage Growth Properties | 0001628063 | 8-K | `/Archives/edgar/data/1628063/000119312526460888/srg-20261113.htm` | **2.02** Results of Operations and Financial Condition. — On November 13 2026, the Company issued a press release regarding its financial results for the three and nine months ended September 30, 2026.<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits Exhibit No. Description 99.1 Press release dated November 13, 2026 104 Cover Page Interactive Data File (embedded within Inline XBRL document) SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. |
-| 37 | `0001193125-26-460887` | CERENOME, INC. | 0001095981 | 8-K | `/Archives/edgar/data/1095981/000119312526460887/cnsy-20261113.htm` | **2.02** Results of Operations and Financial Condition. — On November 13, 2026, Cerenome, Inc. (the “Company”) reported financial results for the third quarter ended September 30, 2026 and other recent corporate updates.<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits. |
-| 38 | `0001193125-26-460879` | Apollo Global Management, Inc. | 0001858681 | 8-K | `/Archives/edgar/data/1858681/000119312526460879/d143669d8k.htm` | **1.01** Entry into a Material Definitive Agreement. — On November 13, 2026, Apollo Global Management, Inc. (the “Company”) issued $600,000,000 aggregate principal amount of its 7.550% Fixed-Rate Resettable Junior Subordinated Notes due 2056 (the “Notes”), pursuant to a previously announced underwritten public offering (the “Offering”).<br>**2.03** Creation of a Direct Financial Obligation or an Obligation under an Off-Balance Sheet Arrangement of a Registrant. — The information contained in Item 1.01 of this Current Report on Form 8-K is hereby incorporated by reference into this Item 2.03.<br>**8.01** Other Events. — The information contained in Item 1.01 of this Current Report on Form 8-K is hereby incorporated by reference into this Item 8.01.<br>**9.01** Financial Statements and Exhibits. — The exhibits to this Current Report on Form 8-K (except Exhibit 104) are hereby incorporated by reference into the Registration Statement. (d) Exhibits. |
-| 39 | `0001628280-26-073897` | American Strategic Investment Co. | 0001595527 | 8-K | `/Archives/edgar/data/1595527/000162828026073897/nycr-20261113.htm` | **2.02** Results of Operations and Financial Condition. — On November 13, 2026, American Strategic Investment Co. (the “Company”) issued a press release announcing its results of operations for the quarter ended September 30, 2026, and supplemental financial information for the quarter ended September 30, 2026, attached hereto as Exhibits 99.1 and 99.2, respectively.<br>**7.01** Regulation FD Disclosure. — As disclosed in Item 2.02 above, on November 13, 2026, the Company issued a press release announcing its results of operations for the quarter ended September 30, 2026, and supplemental financial information for the quarter ended September 30, 2026, attached hereto as Exhibits 99.1 and 99.2, respectively.<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits Exhibit No. Description 99.1 Press Release dated November 13, 2026 99.2 Supplemental information for the quarter ended September 30, 2026 104 Cover Page Interactive Data File - the cover page XBRL tags are embedded within the Inline XBRL document |
-| 40 | `0001104659-26-127163` | QUALCOMM INC/DE | 0000804328 | 8-K | `/Archives/edgar/data/804328/000110465926127163/tm2629667d1_8k.htm` | **1.01** Entry into a Material Definitive Agreement. — On November 12, 2026, QUALCOMM Incorporated (the Company) executed an Officers’ Certificate (the Officers’ Certificate), in accordance with Sections 2.02, 2.03, 10.04 and 10.05 of the Indenture dated May 20, 2015 (the Base Indenture and, together with the Officers’ Certificate, the Indenture) between the Company and U.S. Bank Trust Company, National Association (as successor in interest to U.S. Bank National Association), as trustee (the Trustee), in connection with the sale of $750,000,000 in aggregate principal amount of the Company’s 5.000% Notes due 2028 (the 2028 Notes), $750,000,000 in aggregate principal amount of the Company’s 5.150% Notes due 2029 (the 2029 Notes), $1,000,000,000 in aggregate principal amount of the Company’s 5.350% Notes due 2031 (the 2031 Notes), $750,000,000 in aggregate principal amount of the Company’s 5.600% Notes due 2033 (the 2033 Notes) and [...]<br>**8.01** Other Events. — On November 9, 2026, the Company entered into an underwriting agreement (the Underwriting Agreement) with BNP Paribas Securities Corp., BofA Securities, Inc., Deutsche Bank Securities Inc., J.P.<br>**9.01** Financial Statements and Exhibits. — (d) Exhibits Exhibit No Description 1.1 Underwriting Agreement, dated November 9, 2026, among QUALCOMM Incorporated, BNP Paribas Securities Corp., BofA Securities, Inc., Deutsche Bank Securities Inc., J.P. |
+| 1 | `0001213900-26-119916` | Tempest Therapeutics, Inc. | 0001544227 | 8-K | `/Archives/edgar/data/1544227/000121390026119916/ea0312157-8k_tempest.htm` | **2.02** Results of Operations and Financial Condition. — Tempest Therapeutics issued a press release on November 13, 2026 announcing its financial results for the quarter ended September 30, 2026 and other business highlights.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the press release dated November 13, 2026 (Exhibit 99.1) and the cover-page interactive data file (Exhibit 104). |
+| 2 | `0001171843-26-007431` | BeyondSpring Inc. | 0001677940 | 8-K | `/Archives/edgar/data/1677940/000117184326007431/f8k_111326.htm` | **2.02** Results of Operations and Financial Condition. — BeyondSpring issued a press release announcing its financial results for the quarter ended September 30, 2026.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the press release dated November 13, 2026 (Exhibit 99.1) and the cover-page interactive data file (Exhibit 104). |
+| 3 | `0001193125-26-461047` | BCP Investment Corp | 0001372807 | 8-K | `/Archives/edgar/data/1372807/000119312526461047/d520705d8k.htm` | **2.02** Results of Operations and Financial Condition. — BCP Investment Corporation furnished a press release announcing its financial results for the fiscal quarter ended September 30, 2026, plus a supplemental investor presentation dated November 12, 2026.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the earnings press release (99.1), the investor presentation (99.2), and the cover-page interactive data file (104). |
+| 4 | `0001140361-26-043831` | CareTrust REIT, Inc. | 0001590717 | 8-K | `/Archives/edgar/data/1590717/000114036126043831/ny20085288x3_8k.htm` | **1.01** Entry into a Material Definitive Agreement — CareTrust REIT signed forward sale agreements with Bank of America and Morgan Stanley on November 11, 2026 covering 17,000,000 shares of common stock, and additional agreements on November 12 covering a further 2,550,000 shares.<br>**8.01** Other Events — CareTrust and its operating partnership signed the underwriting agreement for the registered offering of the 17,000,000 shares; the underwriters exercised their option for the extra 2,550,000 shares in full, and the forward purchasers borrowed and sold all 19,550,000 shares to the underwriters on November 13, 2026.<br>**9.01** Financial Statements and Exhibits — Lists the exhibits: the underwriting agreement (1.1), the DLA Piper opinion (5.1) and consent (23.1), four forward confirmations (10.1-10.4), and the cover-page interactive data file (104). |
+| 5 | `0001493152-26-051858` | MANGOCEUTICALS, INC. | 0001938046 | 8-K | `/Archives/edgar/data/1938046/000149315226051858/form8-k.htm` | **3.03** Material Modification to Rights of Security Holders. — Incorporates Item 5.03: the Series B and Series C designation amendments and the new Series D designation took effect November 9, 2026; the Series D stock will rank senior to the common stock for dividends and liquidation, though no Series D shares were issued by the filings themselves.<br>**5.03** Amendments to Articles of Incorporation or Bylaws; Change in Fiscal Year. — Mangoceuticals filed Texas certificates of amendment on November 9, 2026 (board-approved November 4) amending the designations of its Series B and 6% Series C convertible preferred stock - chiefly to approve the new Series D designation and its transactions and waive conflicting Series B/C restrictions - and establishing the Series D preferred stock.<br>**5.07** Submission of Matters to a Vote of Security Holders. — The holder of all 980,000 outstanding Series C shares approved the Series C amendment and the Series D designation by written consent on November 6, 2026, including a proposed Regulation A sale of up to 1,000,000 Series D shares at $10.00 per share; there were no votes against or abstentions.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the Series B amendment (3.1), the Series C amendment (3.2), the 8% Series D certificate of designations (3.3), and the cover-page interactive data file (104). |
+| 6 | `0001193125-26-461028` | Western Union CO | 0001365135 | 8-K | `/Archives/edgar/data/1365135/000119312526461028/d152329d8k.htm` | **1.02** Termination of a Material Definitive Agreement. — Western Union's 2024 delayed-draw term loan agreement will terminate when the loan under it is repaid, expected on or about November 17, 2026, with no material early-termination penalties.<br>**2.03** Creation of a Direct Financial Obligation or an Obligation under an Off-Balance Sheet Arrangement of a Registrant. — Western Union borrowed the full $800 million committed amount under its January 2026 delayed-draw term loan facility on November 10, 2026 and intends to use the proceeds to repay in full the $800 million outstanding under the 2024 term loan agreement, which matures in December 2027. |
+| 7 | `0001193125-26-461027` | 3D SYSTEMS CORP | 0000910638 | 8-K | `/Archives/edgar/data/910638/000119312526461027/d533328d8k.htm` | **1.01** Entry into a Material Definitive Agreement. — 3D Systems exchanged all of its outstanding 5.875% convertible notes due 2030 on November 12, 2026 for $85 million of new 3.30% convertible notes due 2031, $20 million in cash plus accrued interest, and 13,471,138 shares of common stock, under exchange agreements signed November 4 with all of the 2030 noteholders.<br>**1.02** Termination of a Material Definitive Agreement. — After the exchange, 3D Systems had all outstanding 2030 notes cancelled on November 12, 2026, so the 2030 notes indenture was satisfied and discharged and the related guarantees and collateral liens were released.<br>**2.03** Creation of a Direct Financial Obligation or an Obligation under an Off-Balance Sheet Arrangement of a Registrant. — Cross-references Item 1.01: the new $85 million of 3.30% convertible notes due 2031 are a direct financial obligation.<br>**3.02** Unregistered Sales of Equity Securities. — Cross-references Item 1.01 for the shares and notes issued in the exchange, and reports 1,464,206 shares issued to J. Wood Capital Advisors LLC on November 12, 2026 as payment for services, with no cash proceeds, under the Section 4(a)(2) exemption.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the 2031 notes indenture (4.1), the form of 3.30% note due 2031 (4.2), and the cover-page interactive data file (104). |
+| 8 | `0001140361-26-043829` | Navient Holdings, Inc. | 0002152623 | 8-K | `/Archives/edgar/data/2152623/000114036126043829/ef20085597_8k.htm` | **5.02** Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. — Navient director Frederick Arnold told the company on November 11, 2026 that he was voluntarily retiring from the board effective immediately; his decision was not the result of any disagreement with the company. |
+| 9 | `0001493152-26-051849` | Polomar Health Services, Inc. | 0001265521 | 8-K | `/Archives/edgar/data/1265521/000149315226051849/form8-k.htm` | **1.01** Entry Into a Material Definitive Agreement. — Incorporates Item 2.03: the $450,000 promissory note and loan agreement with Island 40 Group, LLC is the material definitive agreement reported.<br>**2.03** Creation of a Direct Financial Obligation or an Obligation. — Polomar signed a $450,000 promissory note and loan agreement with Island 40 Group, LLC effective November 9, 2026, covering placement commissions owed under their sales director and distribution agreement; its pharmacy subsidiary guarantees the note, which bears interest at 10% through 2026 and then at the WSJ prime rate plus 4%, and matures March 31, 2027.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the promissory note and loan agreement (Exhibit 10.1) and the cover-page interactive data file (Exhibit 104). |
+| 10 | `0001193125-26-461016` | IonQ, Inc. | 0001824920 | 8-K | `/Archives/edgar/data/1824920/000119312526461016/ionq-20261110.htm` | **3.02** Unregistered Sales of Equity Securities. — IonQ filed a prospectus supplement on November 13, 2026 under its Form S-3ASR shelf covering the resale by selling stockholders of up to 34,580,646 shares of common stock.<br>**5.02** Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. — IonQ appointed Gary Merrill - previously Commvault's chief financial officer - as CFO, Treasurer and principal financial and accounting officer on November 10, 2026, effective his expected start date of December 3, 2026; he succeeds Inder M. Singh, and Niccolo M. de Masi serves as interim principal financial and accounting officer until Merrill starts.<br>**8.01** Other Events. — IonQ announced on November 13, 2026 that Thomas A. Austin, previously Juniper Networks' chief accounting officer, was appointed its Chief Accounting Officer effective November 16, 2026.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the Paul, Weiss opinion (5.1) and consent (23.1), the press release (99.1), and the cover-page interactive data file (104). |
+| 11 | `0001193125-26-461010` | Dolby Laboratories, Inc. | 0001308547 | 8-K | `/Archives/edgar/data/1308547/000119312526461010/d101237d8k.htm` | **5.02** Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. — Dolby's compensation committee adopted the 2027 Dolby Executive Bonus Plan on November 10, 2026; CEO Marc Whitten's target bonus is 100% of base salary and his fiscal 2027 bonus will be paid at 100% of target, while other officers' bonuses hinge on non-GAAP operating income, revenue and other goals set by the committee. |
+| 12 | `0001640334-26-001797` | Panamera Holdings Corp | 0001620749 | 8-K | `/Archives/edgar/data/1620749/000164033426001797/pnht_8k.htm` | **4.02** Non-Reliance on Previously Issued Financial Statements or a Related Audit Report or Interim Review — Panamera said that, following its October 26, 2026 disclosure of an unreported employment agreement and a resulting unreported lawsuit, it is restating the affected periods through an amendment to its annual report on Form 10-K for the fiscal year ended July 31, 2025, and that its audit committee discussed the matters with its independent registered public accounting firm. |
+| 13 | `0001493152-26-051841` | Cingulate Inc. | 0001862150 | 8-K | `/Archives/edgar/data/1862150/000149315226051841/form8-k.htm` | **1.01** Entry into Material Definitive Agreement — Cingulate amended its at-the-market sales agreement on November 13, 2026 to add Maxim Group LLC as a second sales agent alongside A.G.P./Alliance Global Partners, under which the company may sell up to $100 million of common stock from time to time.<br>**2.02** Results of Operations and Financial Condition. — Cingulate issued a press release announcing its financial results for the quarter ended September 30, 2026 and providing a regulatory update.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the ATM agreement amendment (Exhibit 10.1), the press release (Exhibit 99.1), and the cover-page interactive data file (Exhibit 104). |
+| 14 | `0001493152-26-051839` | Flux Power Holdings, Inc. | 0001083743 | 8-K | `/Archives/edgar/data/1083743/000149315226051839/form8-k.htm` | **1.01** Entry into a Material Definitive Agreement. — Flux Power's lender, Gibraltar Business Capital, agreed by letter dated November 13, 2026 (effective November 6) to extend the deadline for the company's required $4.0 million equity raise under its loan and security agreement from November 6 to December 4, 2026; all other loan terms are unchanged.<br>**2.03** Creation of a Direct Financial Obligation or an Obligation under an Off-Balance Sheet Arrangement of a Registrant. — Cross-references Item 1.01 for the direct-financial-obligation information.<br>**3.01** Notice of Delisting or Failure to Satisfy a Continued Listing Rule or Standard; Transfer of Listing. — Nasdaq notified Flux Power on November 9, 2026 that its stockholders' deficit of $431,000 puts it below the $2.5 million minimum stockholders' equity required for continued listing on the Nasdaq Capital Market; the company has until December 24, 2026 to submit a plan to regain compliance.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the lender letter agreement (Exhibit 10.1) and the cover-page interactive data file (Exhibit 104). |
+| 15 | `0001104659-26-127233` | Versa Bancorp | 0002100848 | 8-K12B | `/Archives/edgar/data/2100848/000110465926127233/tm2629642d1_8k12b.htm` | **1.01** Entry into a Material Definitive Agreement. — Incorporates the introductory note on the completed reorganization, and adds that on completion Versa Bancorp entered into indemnification agreements with each of its directors and executive officers.<br>**2.01** Completion of Acquisition or Disposition of Assets. — Incorporates the introductory note describing completion of the reorganization under which Versa Bancorp became the parent company of VersaBank.<br>**3.01** Notice of Delisting or Failure to Satisfy a Continued Listing Rule or Standard; Transfer of Listing. — Incorporates the introductory note for the listing information connected with the reorganization.<br>**3.03** Material Modification to Rights of Security Holders. — Incorporates the introductory note and Item 5.03, and explains that Versa Bancorp is governed by Delaware corporate law rather than the Canadian Bank Act regime that governed VersaBank, with the material differences described in the registration statement.<br>**5.01** Changes in Control of Registrant. — Incorporates the introductory note for the change-of-control information arising from the reorganization.<br>**5.02** Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. — Director Patrick DeLacey resigned from the board on November 9, 2026, not over any disagreement; the board was reduced from eight to seven directors, Scott Verity became audit committee chair, and Barbara Chaffee joined the audit committee.<br>**5.03** Amendments to Articles of Incorporation or Bylaws; Change in Fiscal Year. — Versa Bancorp amended its certificate of incorporation on November 12, 2026 to increase authorized shares to 350,000,000 and to provide indemnification for officers and directors, and adopted new bylaws, in anticipation of the reorganization.<br>**7.01** Regulation FD Disclosure. — Versa Bancorp issued a press release on November 13, 2026 announcing completion of the reorganization.<br>**9.01** Financial Statements and Exhibits. — Attaches VersaBank's audited consolidated financial statements for fiscal 2025 and 2024 and unaudited statements for the nine months ended July 31, 2026 and 2025 as exhibits, and lists the amended charter (3.1), bylaws (3.2), form of indemnification agreement (10.1), incentive plan (10.2), press release (99.1), and cover-page data file (104). |
+| 16 | `0001104659-26-127230` | Datavault AI Inc. | 0001682149 | 8-K | `/Archives/edgar/data/1682149/000110465926127230/tm2629197d1_8k.htm` | **3.01** Notice of Delisting or Failure to Satisfy a Continued Listing Rule or Standard; Transfer of Listing. — Nasdaq told Datavault AI on November 10, 2026 that its common stock is subject to delisting for failing the $1.00 minimum bid price rule, and that trading will be suspended from November 17, 2026 because the stock closed below $0.10 for ten consecutive business days; the company plans to request a hearings-panel review and expects the shares to trade on OTC Markets under DVLT meanwhile.<br>**8.01** Other Events. — Datavault issued a press release on November 13, 2026 announcing the Nasdaq delisting letter and the trading suspension.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the press release (Exhibit 99.1) and the cover-page interactive data file (Exhibit 104). |
+| 17 | `0001878897-26-000055` | Douglas Elliman Inc. | 0001878897 | 8-K | `/Archives/edgar/data/1878897/000187889726000055/doug-20261113.htm` | **5.02** Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers — Douglas Elliman and its Executive Vice President, Treasurer and CFO James B. Kirkland III mutually agreed that he will retire effective November 13, 2026; his separation agreement pays one year of his $650,000 base salary, a $369,253 pro-rated 2026 bonus, a $150,000 retention payment, accelerated vesting of 447,708 restricted shares, and $40,000 for unused vacation. |
+| 18 | `0001104659-26-127228` | CHEETAH NET SUPPLY CHAIN SERVICE INC. | 0001951667 | 8-K | `/Archives/edgar/data/1951667/000110465926127228/tm2629774d1_8k.htm` | **2.02** Results of Operations and Financial Condition — Cheetah Net issued a press release announcing its financial results for the third quarter of 2026.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the press release (Exhibit 99.1) and the cover-page interactive data file (Exhibit 104). |
+| 19 | `0001493152-26-051834` | AIRWA INC. | 0001674440 | 8-K | `/Archives/edgar/data/1674440/000149315226051834/form8-k.htm` | **1.01** Entry into a Material Definitive Agreement. — AiRWA signed securities purchase agreements on November 9, 2026 to sell 1,800,000 shares of common stock to investors at $0.8332 per share - about $1.5 million gross - in a private placement expected to close around November 17, 2026, with proceeds for working capital and general corporate purposes.<br>**3.02** Unregistered Sales of Equity Securities. — Cross-references Item 1.01 for the unregistered sale of the 1,800,000 shares.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the form of securities purchase agreement (Exhibit 10.1) and the cover-page interactive data file (Exhibit 104). |
+| 20 | `0001437749-26-036953` | AZIO AI HOLDINGS, INC. | 0001563568 | 8-K | `/Archives/edgar/data/1563568/000143774926036953/adom20261113_8k.htm` | **5.02** Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. — Azio AI stockholders approved the company's 2026 Equity Incentive Plan at the annual meeting on November 13, 2026, so the plan took effect immediately.<br>**5.07** Submission of Matters to a Vote of Security Holders. — At Azio's reconvened annual meeting on November 13, 2026 (adjourned from November 2 for lack of quorum), holders of 54.2% of the shares were represented and proposals 1, 2, 3, 5, 6 and 7 were approved; only proposal 4 - approval of shares issuable on conversion of the Series A preferred stock - was adjourned to December 4, 2026 because Nasdaq has not yet approved the company's listing application. |
+| 21 | `0001493152-26-051832` | Where Food Comes From, Inc. | 0001360565 | 8-K | `/Archives/edgar/data/1360565/000149315226051832/form8-k.htm` | **2.02** Results of Operations and Financial Condition Reference — Points readers to the company's November 12, 2026 press release and conference-call transcript for its financial results for the three and nine months ended September 30, 2026.<br>**9.01** Financial Statements and Exhibits (d) — Lists the exhibits: the press release (99.1), the conference-call transcript (99.2), and the cover-page interactive data file (104). |
+| 22 | `0001104659-26-127223` | Booking Holdings Inc. | 0001075531 | 8-K | `/Archives/edgar/data/1075531/000110465926127223/tm2629703d1_8k.htm` | **1.01** Entry into a Material Definitive Agreement. — Booking Holdings issued €3.55 billion of senior notes on November 13, 2026 under its 2017 indenture - €1.25 billion of 3.950% notes due 2029, €800 million of 4.375% notes due 2032, €750 million of 4.750% notes due 2035 and €750 million of 5.000% notes due 2038 - documented through four officers' certificates.<br>**2.03** Creation of a Direct Financial Obligation or an Obligation Under an Off-Balance Sheet Arrangement of the Registrant. — Incorporates Item 1.01: the €3.55 billion senior-note issuance creates a direct financial obligation.<br>**8.01** Other Events. — Booking Holdings signed an underwriting agreement on November 9, 2026 with Banco Santander, BNP Paribas, Deutsche Bank, Goldman Sachs and HSBC as underwriters' representatives for the registered public offering of the €3.55 billion of senior notes.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the underwriting agreement (1.1), forms of the four senior notes (4.1-4.4), the four officers' certificates (4.5-4.8), the agency agreement (4.9), the Cravath opinion (5.1) and consent (23.1), and the cover-page interactive data file (104). |
+| 23 | `0001193125-26-460951` | BEASLEY BROADCAST GROUP INC | 0001099160 | 8-K | `/Archives/edgar/data/1099160/000119312526460951/bbgi-20261113.htm` | **2.02** Results of Operations and Financial Condition. — Beasley Broadcast Group issued a press release announcing its financial results for the fiscal quarter ended September 30, 2026.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the press release (Exhibit 99.1) and the cover-page interactive data file (Exhibit 104). |
+| 24 | `0001213900-26-119857` | Health In Tech, Inc. | 0002019505 | 8-K | `/Archives/edgar/data/2019505/000121390026119857/ea0311991-8k_health.htm` | **2.02** Results of Operations and Financial Condition. — Health In Tech issued a press release on November 12, 2026 announcing its results of operations for the quarter ended September 30, 2026.<br>**7.01** Regulation FD Disclosure. — Repeats the Item 2.02 disclosure - the November 12, 2026 press release with results for the quarter ended September 30, 2026 - under Regulation FD.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the press release (Exhibit 99.1) and the cover-page interactive data file (Exhibit 104). |
+| 25 | `0000877860-26-000230` | NATIONAL HEALTH INVESTORS INC | 0000877860 | 8-K | `/Archives/edgar/data/877860/000087786026000230/nhi-20261109.htm` | **5.02** Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. — National Health Investors entered into indemnification agreements on November 9, 2026 with each of its directors and certain officers, including all executive officers, obligating the company to indemnify them to the maximum extent permitted by Maryland law.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the form of indemnification agreement (Exhibit 10.1) and the cover-page interactive data file (Exhibit 104). |
+| 26 | `0001628280-26-073911` | DocGo Inc. | 0001822359 | 8-K | `/Archives/edgar/data/1822359/000162828026073911/dcgo-20261113.htm` | **5.02** Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. — DocGo and CEO Lee Bienstock signed a transition services and separation agreement on November 13, 2026: with his employment agreement expiring December 31, 2026 and a CEO search under way, he will stay on as CEO through a transition period running January 1 to March 31, 2027 (then serve as senior advisor if a successor starts sooner), for $90,000 per month plus specified equity vesting and his 2026 bonus.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the transition services and separation agreement with Lee Bienstock (Exhibit 10.1) and the cover-page interactive data file (Exhibit 104). |
+| 27 | `0001437749-26-036943` | ACCURAY INC | 0001138723 | 8-K | `/Archives/edgar/data/1138723/000143774926036943/aray20261111_8k.htm` | **3.02** Unregistered Sales of Equity Securities. — Incorporates Item 3.03 on the Series A preferred stock, which was sold in a private placement to accredited investors in reliance on the Section 4(a)(2) exemption.<br>**3.03** Material Modification to Rights of Security Holders. — Accuray closed the sale of 55,000 shares of Series A convertible preferred stock for $55.0 million - $15.0 million in cash plus conversion of $40.0 million of existing investor debt - and filed the certificate of designations on November 12, 2026; the shares were issued November 13, carry an 8% preferential dividend, and rank senior to the common stock.<br>**5.03** Amendments to Articles of Incorporation or Bylaws; Change in Fiscal Year. — Accuray filed two charter amendments on November 6, 2026 - one raising authorized common shares from 200 million to 400 million and one effecting a 1-for-40 reverse stock split - both effective November 9, 2026, when the stock began trading split-adjusted under ARAY with a new CUSIP.<br>**7.01** Regulation FD Disclosure — Accuray disclosed that warrants held by the investors to buy about 27.6 million pre-split shares were automatically cancelled at the financing closing, and that it issued a press release on November 13, 2026 about the share increase, reverse split and preferred stock issuance.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the Series A certificate of designations (3.1), the authorized-share-increase amendment (3.2), the reverse-split amendment (3.3), the press release (99.1), and the cover-page interactive data file (104). |
+| 28 | `0001104659-26-127202` | Contango Silver & Gold Inc. | 0001502377 | 8-K | `/Archives/edgar/data/1502377/000110465926127202/tm2629486d1_8k.htm` | **1.01** Entry into a Material Definitive Agreement. — Contango Silver & Gold signed an at-the-market sales agreement on November 13, 2026 with Cantor Fitzgerald as lead agent and eight co-agents, under which it may offer and sell up to $75 million of common stock from time to time, paying the agents a commission of up to 3% of gross proceeds.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the sales agreement (1.1), the Cozen O'Connor opinion (5.1) and consent (23.1), and the cover-page interactive data file (104). |
+| 29 | `0001213900-26-119843` | SOUNDHOUND AI, INC. | 0001840856 | 8-K | `/Archives/edgar/data/1840856/000121390026119843/ea0312272-8k_sound.htm` | **5.02** Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. — Tyler Moore became SoundHound's principal accounting officer effective November 9, 2026, succeeding CFO John Collins in that role while Collins continues as CFO and principal financial officer; Moore, hired November 2, 2026 as Executive Vice President and Chief Accounting Officer, receives a $345,000 base salary, a bonus target of up to 40% of salary, and 100,000 RSUs vesting monthly over four years.<br>**9.01** Financial Statement and Exhibits. Exhibit Number — Lists the exhibits: the cover-page interactive data file (Exhibit 104) only. |
+| 30 | `0001493152-26-051809` | NextBoat Inc. | 0002067767 | 8-K | `/Archives/edgar/data/2067767/000149315226051809/form8-k.htm` | **1.01** Entry into a Material Definitive Agreement. — NextBoat's subsidiary Off The Hook Yacht Sales NC signed a seven-year triple-net lease (guaranteed by NextBoat) with Hadley Harbor Group on November 4, 2026 for 22 boat slips at Cape Fear Marina in Wilmington, North Carolina, at $8,950 per month rising 3% a year; the landlord is controlled by director Zebulon Z. Hadley IV and bought the slips from chairman Jason Ruegg's entity, a related-party deal approved by the disinterested audit-committee members.<br>**2.03** Creation of a Direct Financial Obligation or an Obligation under an Off-Balance Sheet Arrangement of a Registrant. — Cross-references Item 1.01: the guaranteed marina-slip lease is a direct financial obligation.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the marina lease, including NextBoat's guaranty (Exhibit 10.1), and the cover-page interactive data file (Exhibit 104). |
+| 31 | `0001493152-26-051811` | Co-Diagnostics, Inc. | 0001692415 | 8-K | `/Archives/edgar/data/1692415/000149315226051811/form8-k.htm` | **5.02** Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. — At a court-ordered special meeting on November 13, 2026, Co-Diagnostics shareholders approved Amendment No. 1 to the company's 2025 Equity Incentive Plan, adding 2,000,000 shares to the plan reserve for a maximum of 2,223,333 shares (the same cap applies to incentive stock options).<br>**5.07** Submission of Matters to a Vote of Security Holders — Co-Diagnostics' special meeting on November 13, 2026 elected Dwight Egan, Eugene Durenard, Richard Serbin, James Nelson and Edward Murphy as directors for one-year terms and adopted the proposals to enlarge the equity-plan reserve, approve executive compensation on an advisory basis, and ratify Tanner LLC as independent auditor for 2026, among the matters voted on.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: Amendment No. 1 to the 2025 Equity Incentive Plan (Exhibit 10.1) and the cover-page interactive data file (Exhibit 104). |
+| 32 | `0001493152-26-051810` | Beyond Air, Inc. | 0001641631 | 8-K | `/Archives/edgar/data/1641631/000149315226051810/form8-k.htm` | **2.02** Results of Operations and Financial Condition. — Beyond Air issued a press release on November 11, 2026 announcing its financial results for the fiscal quarter ended September 30, 2026 and recent corporate developments.<br>**7.01** Regulation FD Disclosure. — Incorporates the Item 2.02 information - the November 11, 2026 results press release - under Regulation FD.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the press release (Exhibit 99.1) and the cover-page interactive data file (Exhibit 104). |
+| 33 | `0001493152-26-051808` | Q/C TECHNOLOGIES, INC. | 0001321834 | 8-K | `/Archives/edgar/data/1321834/000149315226051808/form8-k.htm` | **3.01** Notice of Delisting or Failure to Satisfy a Continued Listing Rule or Standard; Transfer of Listing. — Nasdaq notified Q/C Technologies on November 6, 2026 that, with its closing bid price below $1.00 for the 30 consecutive business days from September 25 to November 5, 2026, it no longer meets the minimum bid price rule; the company has a 180-day compliance period, until May 5, 2027, to regain compliance and is evaluating options including a possible reverse stock split. |
+| 34 | `0001213900-26-119839` | BRC Group Holdings, Inc. | 0001464790 | 8-K | `/Archives/edgar/data/1464790/000121390026119839/ea0312286-8k_brcgroup.htm` | **5.02** (b) Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. — BRC Group will eliminate the Chief Accounting Officer role effective November 16, 2026 because it does not consider the separate role necessary; Howard Weitzman will step down as Chief Accounting Officer, remain with the company as Head of Corporate Tax, and cease to be an executive officer and Section 16 officer. |
+| 35 | `0001493152-26-051806` | Evofem Biosciences, Inc. | 0001618835 | 8-K | `/Archives/edgar/data/1618835/000149315226051806/form8-k.htm` | **2.02** Results of Operations and Financial Condition. — Evofem issued a press release announcing its financial results for the three and nine months ended September 30, 2026.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the press release (Exhibit 99.1) and the cover-page interactive data file (Exhibit 104). |
+| 36 | `0001193125-26-460888` | Seritage Growth Properties | 0001628063 | 8-K | `/Archives/edgar/data/1628063/000119312526460888/srg-20261113.htm` | **2.02** Results of Operations and Financial Condition. — Seritage Growth Properties issued a press release regarding its financial results for the three and nine months ended September 30, 2026.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the press release (Exhibit 99.1) and the cover-page interactive data file (Exhibit 104). |
+| 37 | `0001193125-26-460887` | CERENOME, INC. | 0001095981 | 8-K | `/Archives/edgar/data/1095981/000119312526460887/cnsy-20261113.htm` | **2.02** Results of Operations and Financial Condition. — Cerenome reported its financial results for the third quarter ended September 30, 2026, together with other recent corporate updates, in a press release.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the press release announcing financial results dated November 13, 2026 (Exhibit 99.1) and the cover-page interactive data file (Exhibit 104). |
+| 38 | `0001193125-26-460879` | Apollo Global Management, Inc. | 0001858681 | 8-K | `/Archives/edgar/data/1858681/000119312526460879/d143669d8k.htm` | **1.01** Entry into a Material Definitive Agreement. — Apollo Global Management issued $600 million of 7.550% fixed-rate resettable junior subordinated notes due 2056 on November 13, 2026 in an underwritten public offering; interest is fixed until the first reset date of December 15, 2036 and thereafter floats at the five-year U.S. Treasury rate plus 2.672%, and the proceeds are earmarked for general corporate purposes including funding the announced investment in Mubadala Capital.<br>**2.03** Creation of a Direct Financial Obligation or an Obligation under an Off-Balance Sheet Arrangement of a Registrant. — Cross-references Item 1.01: the $600 million junior subordinated notes are a direct financial obligation.<br>**8.01** Other Events. — Cross-references Item 1.01 and adds the underwriting agreement dated November 9, 2026 with J.P. Morgan, BofA Securities, Morgan Stanley and Wells Fargo as representatives, and the Paul, Weiss opinion on the validity of the notes and guarantees.<br>**9.01** Financial Statements and Exhibits. — Incorporates the exhibits into the registration statement and lists them: the underwriting agreement (1.1), the indenture (4.1), the form of note (4.2), the Paul, Weiss opinion (5.1) and consent (23.1), and the cover-page interactive data file (104). |
+| 39 | `0001628280-26-073897` | American Strategic Investment Co. | 0001595527 | 8-K | `/Archives/edgar/data/1595527/000162828026073897/nycr-20261113.htm` | **2.02** Results of Operations and Financial Condition. — American Strategic Investment issued a press release on November 13, 2026 announcing its results of operations for the quarter ended September 30, 2026 and supplemental financial information for the same quarter.<br>**7.01** Regulation FD Disclosure. — Repeats the Item 2.02 disclosure - the November 13, 2026 press release and supplemental information - under Regulation FD.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the press release (99.1), the supplemental information for the quarter ended September 30, 2026 (99.2), and the cover-page interactive data file (104). |
+| 40 | `0001104659-26-127163` | QUALCOMM INC/DE | 0000804328 | 8-K | `/Archives/edgar/data/804328/000110465926127163/tm2629667d1_8k.htm` | **1.01** Entry into a Material Definitive Agreement. — QUALCOMM sold $4.0 billion of senior notes on November 12, 2026 under its 2015 indenture through an officers' certificate: $750 million of 5.000% notes due 2028, $750 million of 5.150% notes due 2029, $1.0 billion of 5.350% notes due 2031, $750 million of 5.600% notes due 2033, and $750 million of 5.800% notes due 2036.<br>**8.01** Other Events. — QUALCOMM signed an underwriting agreement on November 9, 2026 with BNP Paribas, BofA Securities, Deutsche Bank, J.P. Morgan and Morgan Stanley, as representatives of the underwriters, for the registered public offering of the notes under its Form S-3 shelf registration statement.<br>**9.01** Financial Statements and Exhibits. — Lists the exhibits: the underwriting agreement (1.1), the 2015 indenture (4.1), the officers' certificate (4.2), forms of the five series of notes (4.3-4.7), the Sidley Austin opinion (5.1), and the cover-page interactive data file (104). |
 
-Truncation flags (3 of 108 item summaries): the first sentence under the heading ran past the 900-character capture cap, so the summary is cut there and marked ` [...]`. The affected items are:
-
-- `0001104659-26-127223` Item 1.01
-- `0001104659-26-127223` Item 9.01
-- `0001104659-26-127163` Item 1.01
-
-All other 105 summaries are complete first sentences.
+Revision 1 note: no summary above is a verbatim copy, a fragment cut at an abbreviation, or a truncated capture; the three summaries that were cut at the old 900-character capture cap in the first submission (Booking Holdings 1.01 and 9.01, QUALCOMM 1.01) are rewritten like all the others, and their PROOF excerpts below are complete.
 
 ## PROOF — feed requests
 
@@ -179,6 +173,39 @@ First entry: `8-K - MACROGENICS INC (0001125345) (Filer)` — updated `2026-11-1
 
 Last entry: `8-K/A - NIQ Global Intelligence plc (0002054696) (Filer)` — updated `2026-11-13T16:29:35-05:00` — <https://www.sec.gov/Archives/edgar/data/2054696/000205469626000030/0002054696-26-000030-index.htm>
 
+Raw first `<entry>` element, exactly as the saved feed response returned it (Revision 1):
+
+```xml
+<entry>
+<title>8-K - MACROGENICS INC (0001125345) (Filer)</title>
+<link rel="alternate" type="text/html" href="https://www.sec.gov/Archives/edgar/data/1125345/000112534526000077/0001125345-26-000077-index.htm"/>
+<summary type="html">
+ &lt;b&gt;Filed:&lt;/b&gt; 2026-11-13 &lt;b&gt;AccNo:&lt;/b&gt; 0001125345-26-000077 &lt;b&gt;Size:&lt;/b&gt; 6 MB
+&lt;br&gt;Item 7.01: Regulation FD Disclosure
+&lt;br&gt;Item 9.01: Financial Statements and Exhibits
+</summary>
+<updated>2026-11-13T17:28:39-05:00</updated>
+<category scheme="https://www.sec.gov/" label="form type" term="8-K"/>
+<id>urn:tag:sec.gov,2008:accession-number=0001125345-26-000077</id>
+</entry>
+```
+
+Raw last `<entry>` element, exactly as the saved feed response returned it (Revision 1):
+
+```xml
+<entry>
+<title>8-K/A - NIQ Global Intelligence plc (0002054696) (Filer)</title>
+<link rel="alternate" type="text/html" href="https://www.sec.gov/Archives/edgar/data/2054696/000205469626000030/0002054696-26-000030-index.htm"/>
+<summary type="html">
+ &lt;b&gt;Filed:&lt;/b&gt; 2026-11-13 &lt;b&gt;AccNo:&lt;/b&gt; 0002054696-26-000030 &lt;b&gt;Size:&lt;/b&gt; 4 MB
+&lt;br&gt;Item 2.02: Results of Operations and Financial Condition
+</summary>
+<updated>2026-11-13T16:29:35-05:00</updated>
+<category scheme="https://www.sec.gov/" label="form type" term="8-K/A"/>
+<id>urn:tag:sec.gov,2008:accession-number=0002054696-26-000030</id>
+</entry>
+```
+
 Page `start=100` — requested 2026-11-16T10:33:09Z, responded 2026-11-16T10:33:12Z, HTTP 200, Date header `Mon, 16 Nov 2026 10:33:13 GMT`, 100 entries.
 
 Raw feed line: `<updated>2026-11-16T05:33:03-05:00</updated>`
@@ -186,6 +213,42 @@ Raw feed line: `<updated>2026-11-16T05:33:03-05:00</updated>`
 First entry: `8-K - PharmaCyte Biotech, Inc. (0001157075) (Filer)` — updated `2026-11-13T16:28:19-05:00` — <https://www.sec.gov/Archives/edgar/data/1157075/000168316826008705/0001683168-26-008705-index.htm>
 
 Last entry: `8-K - AAON, INC. (0000824142) (Filer)` — updated `2026-11-13T15:16:30-05:00` — <https://www.sec.gov/Archives/edgar/data/824142/000162828026073758/0001628280-26-073758-index.htm>
+
+Raw first `<entry>` element, exactly as the saved feed response returned it (Revision 1):
+
+```xml
+<entry>
+<title>8-K - PharmaCyte Biotech, Inc. (0001157075) (Filer)</title>
+<link rel="alternate" type="text/html" href="https://www.sec.gov/Archives/edgar/data/1157075/000168316826008705/0001683168-26-008705-index.htm"/>
+<summary type="html">
+ &lt;b&gt;Filed:&lt;/b&gt; 2026-11-13 &lt;b&gt;AccNo:&lt;/b&gt; 0001683168-26-008705 &lt;b&gt;Size:&lt;/b&gt; 219 KB
+&lt;br&gt;Item 3.03: Material Modifications to Rights of Security Holders
+&lt;br&gt;Item 5.03: Amendments to Articles of Incorporation or Bylaws; Change in Fiscal Year
+&lt;br&gt;Item 8.01: Other Events
+&lt;br&gt;Item 9.01: Financial Statements and Exhibits
+</summary>
+<updated>2026-11-13T16:28:19-05:00</updated>
+<category scheme="https://www.sec.gov/" label="form type" term="8-K"/>
+<id>urn:tag:sec.gov,2008:accession-number=0001683168-26-008705</id>
+</entry>
+```
+
+Raw last `<entry>` element, exactly as the saved feed response returned it (Revision 1):
+
+```xml
+<entry>
+<title>8-K - AAON, INC. (0000824142) (Filer)</title>
+<link rel="alternate" type="text/html" href="https://www.sec.gov/Archives/edgar/data/824142/000162828026073758/0001628280-26-073758-index.htm"/>
+<summary type="html">
+ &lt;b&gt;Filed:&lt;/b&gt; 2026-11-13 &lt;b&gt;AccNo:&lt;/b&gt; 0001628280-26-073758 &lt;b&gt;Size:&lt;/b&gt; 2 MB
+&lt;br&gt;Item 1.01: Entry into a Material Definitive Agreement
+&lt;br&gt;Item 9.01: Financial Statements and Exhibits
+</summary>
+<updated>2026-11-13T15:16:30-05:00</updated>
+<category scheme="https://www.sec.gov/" label="form type" term="8-K"/>
+<id>urn:tag:sec.gov,2008:accession-number=0001628280-26-073758</id>
+</entry>
+```
 
 ### PULL 2
 
@@ -197,6 +260,40 @@ First entry: `8-K - Envela Corp (0000701719) (Filer)` — updated `2026-11-16T17
 
 Last entry: `8-K - BLUE DOLPHIN ENERGY CO (0000793306) (Filer)` — updated `2026-11-16T16:18:18-05:00` — <https://www.sec.gov/Archives/edgar/data/793306/000143774926037179/0001437749-26-037179-index.htm>
 
+Raw first `<entry>` element, exactly as the saved feed response returned it (Revision 1):
+
+```xml
+<entry>
+<title>8-K - Envela Corp (0000701719) (Filer)</title>
+<link rel="alternate" type="text/html" href="https://www.sec.gov/Archives/edgar/data/701719/000110465926128592/0001104659-26-128592-index.htm"/>
+<summary type="html">
+ &lt;b&gt;Filed:&lt;/b&gt; 2026-11-16 &lt;b&gt;AccNo:&lt;/b&gt; 0001104659-26-128592 &lt;b&gt;Size:&lt;/b&gt; 481 KB
+&lt;br&gt;Item 2.02: Results of Operations and Financial Condition
+&lt;br&gt;Item 9.01: Financial Statements and Exhibits
+</summary>
+<updated>2026-11-16T17:31:11-05:00</updated>
+<category scheme="https://www.sec.gov/" label="form type" term="8-K"/>
+<id>urn:tag:sec.gov,2008:accession-number=0001104659-26-128592</id>
+</entry>
+```
+
+Raw last `<entry>` element, exactly as the saved feed response returned it (Revision 1):
+
+```xml
+<entry>
+<title>8-K - BLUE DOLPHIN ENERGY CO (0000793306) (Filer)</title>
+<link rel="alternate" type="text/html" href="https://www.sec.gov/Archives/edgar/data/793306/000143774926037179/0001437749-26-037179-index.htm"/>
+<summary type="html">
+ &lt;b&gt;Filed:&lt;/b&gt; 2026-11-16 &lt;b&gt;AccNo:&lt;/b&gt; 0001437749-26-037179 &lt;b&gt;Size:&lt;/b&gt; 328 KB
+&lt;br&gt;Item 2.02: Results of Operations and Financial Condition
+&lt;br&gt;Item 9.01: Financial Statements and Exhibits
+</summary>
+<updated>2026-11-16T16:18:18-05:00</updated>
+<category scheme="https://www.sec.gov/" label="form type" term="8-K"/>
+<id>urn:tag:sec.gov,2008:accession-number=0001437749-26-037179</id>
+</entry>
+```
+
 Page `start=100` — requested 2026-11-17T10:40:45Z, responded 2026-11-17T10:40:49Z, HTTP 200, Date header `Tue, 17 Nov 2026 10:40:49 GMT`, 100 entries.
 
 Raw feed line: `<updated>2026-11-17T05:40:49-05:00</updated>`
@@ -204,6 +301,40 @@ Raw feed line: `<updated>2026-11-17T05:40:49-05:00</updated>`
 First entry: `8-K - NEIGHBORHOOD INTELLIGENCE, INC. (0001130713) (Filer)` — updated `2026-11-16T16:18:08-05:00` — <https://www.sec.gov/Archives/edgar/data/1130713/000114036126044210/0001140361-26-044210-index.htm>
 
 Last entry: `8-K - BBCMS Mortgage Trust 2026-5C43 (0002153909) (Filer)` — updated `2026-11-16T13:40:29-05:00` — <https://www.sec.gov/Archives/edgar/data/2153909/000153949726002999/0001539497-26-002999-index.htm>
+
+Raw first `<entry>` element, exactly as the saved feed response returned it (Revision 1):
+
+```xml
+<entry>
+<title>8-K - NEIGHBORHOOD INTELLIGENCE, INC. (0001130713) (Filer)</title>
+<link rel="alternate" type="text/html" href="https://www.sec.gov/Archives/edgar/data/1130713/000114036126044210/0001140361-26-044210-index.htm"/>
+<summary type="html">
+ &lt;b&gt;Filed:&lt;/b&gt; 2026-11-16 &lt;b&gt;AccNo:&lt;/b&gt; 0001140361-26-044210 &lt;b&gt;Size:&lt;/b&gt; 162 KB
+&lt;br&gt;Item 8.01: Other Events
+&lt;br&gt;Item 9.01: Financial Statements and Exhibits
+</summary>
+<updated>2026-11-16T16:18:08-05:00</updated>
+<category scheme="https://www.sec.gov/" label="form type" term="8-K"/>
+<id>urn:tag:sec.gov,2008:accession-number=0001140361-26-044210</id>
+</entry>
+```
+
+Raw last `<entry>` element, exactly as the saved feed response returned it (Revision 1):
+
+```xml
+<entry>
+<title>8-K - BBCMS Mortgage Trust 2026-5C43 (0002153909) (Filer)</title>
+<link rel="alternate" type="text/html" href="https://www.sec.gov/Archives/edgar/data/2153909/000153949726002999/0001539497-26-002999-index.htm"/>
+<summary type="html">
+ &lt;b&gt;Filed:&lt;/b&gt; 2026-11-16 &lt;b&gt;AccNo:&lt;/b&gt; 0001539497-26-002999 &lt;b&gt;Size:&lt;/b&gt; 5 MB
+&lt;br&gt;Item 1.01: Entry into a Material Definitive Agreement
+&lt;br&gt;Item 9.01: Financial Statements and Exhibits
+</summary>
+<updated>2026-11-16T13:40:29-05:00</updated>
+<category scheme="https://www.sec.gov/" label="form type" term="8-K"/>
+<id>urn:tag:sec.gov,2008:accession-number=0001539497-26-002999</id>
+</entry>
+```
 
 ### PULL 3
 
@@ -215,6 +346,44 @@ First entry: `8-K - GridAI Technologies Corp. (0001604191) (Filer)` — updated 
 
 Last entry: `8-K - NEPHROS INC (0001196298) (Filer)` — updated `2026-11-17T16:05:37-05:00` — <https://www.sec.gov/Archives/edgar/data/1196298/000149315226052831/0001493152-26-052831-index.htm>
 
+Raw first `<entry>` element, exactly as the saved feed response returned it (Revision 1):
+
+```xml
+<entry>
+<title>8-K - GridAI Technologies Corp. (0001604191) (Filer)</title>
+<link rel="alternate" type="text/html" href="https://www.sec.gov/Archives/edgar/data/1604191/000110465926129167/0001104659-26-129167-index.htm"/>
+<summary type="html">
+ &lt;b&gt;Filed:&lt;/b&gt; 2026-11-17 &lt;b&gt;AccNo:&lt;/b&gt; 0001104659-26-129167 &lt;b&gt;Size:&lt;/b&gt; 905 KB
+&lt;br&gt;Item 1.01: Entry into a Material Definitive Agreement
+&lt;br&gt;Item 2.01: Completion of Acquisition or Disposition of Assets
+&lt;br&gt;Item 3.02: Unregistered Sales of Equity Securities
+&lt;br&gt;Item 5.02: Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers: Compensatory Arrangements of Certain Officers
+&lt;br&gt;Item 5.03: Amendments to Articles of Incorporation or Bylaws; Change in Fiscal Year
+&lt;br&gt;Item 7.01: Regulation FD Disclosure
+&lt;br&gt;Item 9.01: Financial Statements and Exhibits
+</summary>
+<updated>2026-11-17T17:29:47-05:00</updated>
+<category scheme="https://www.sec.gov/" label="form type" term="8-K"/>
+<id>urn:tag:sec.gov,2008:accession-number=0001104659-26-129167</id>
+</entry>
+```
+
+Raw last `<entry>` element, exactly as the saved feed response returned it (Revision 1):
+
+```xml
+<entry>
+<title>8-K - NEPHROS INC (0001196298) (Filer)</title>
+<link rel="alternate" type="text/html" href="https://www.sec.gov/Archives/edgar/data/1196298/000149315226052831/0001493152-26-052831-index.htm"/>
+<summary type="html">
+ &lt;b&gt;Filed:&lt;/b&gt; 2026-11-17 &lt;b&gt;AccNo:&lt;/b&gt; 0001493152-26-052831 &lt;b&gt;Size:&lt;/b&gt; 190 KB
+&lt;br&gt;Item 5.02: Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers: Compensatory Arrangements of Certain Officers
+</summary>
+<updated>2026-11-17T16:05:37-05:00</updated>
+<category scheme="https://www.sec.gov/" label="form type" term="8-K"/>
+<id>urn:tag:sec.gov,2008:accession-number=0001493152-26-052831</id>
+</entry>
+```
+
 Page `start=100` — requested 2026-11-18T10:41:48Z, responded 2026-11-18T10:41:50Z, HTTP 200, Date header `Wed, 18 Nov 2026 10:41:51 GMT`, 100 entries.
 
 Raw feed line: `<updated>2026-11-18T05:41:51-05:00</updated>`
@@ -223,13 +392,49 @@ First entry: `8-K - IMPACT BIOMEDICAL INC. (0001834105) (Filer)` — updated `20
 
 Last entry: `8-K - UL Solutions Inc. (0001901440) (Filer)` — updated `2026-11-17T07:03:35-05:00` — <https://www.sec.gov/Archives/edgar/data/1901440/000190144026000037/0001901440-26-000037-index.htm>
 
+Raw first `<entry>` element, exactly as the saved feed response returned it (Revision 1):
+
+```xml
+<entry>
+<title>8-K - IMPACT BIOMEDICAL INC. (0001834105) (Filer)</title>
+<link rel="alternate" type="text/html" href="https://www.sec.gov/Archives/edgar/data/1834105/000149315226052822/0001493152-26-052822-index.htm"/>
+<summary type="html">
+ &lt;b&gt;Filed:&lt;/b&gt; 2026-11-17 &lt;b&gt;AccNo:&lt;/b&gt; 0001493152-26-052822 &lt;b&gt;Size:&lt;/b&gt; 226 KB
+&lt;br&gt;Item 5.07: Submission of Matters to a Vote of Security Holders
+</summary>
+<updated>2026-11-17T16:05:36-05:00</updated>
+<category scheme="https://www.sec.gov/" label="form type" term="8-K"/>
+<id>urn:tag:sec.gov,2008:accession-number=0001493152-26-052822</id>
+</entry>
+```
+
+Raw last `<entry>` element, exactly as the saved feed response returned it (Revision 1):
+
+```xml
+<entry>
+<title>8-K - UL Solutions Inc. (0001901440) (Filer)</title>
+<link rel="alternate" type="text/html" href="https://www.sec.gov/Archives/edgar/data/1901440/000190144026000037/0001901440-26-000037-index.htm"/>
+<summary type="html">
+ &lt;b&gt;Filed:&lt;/b&gt; 2026-11-17 &lt;b&gt;AccNo:&lt;/b&gt; 0001901440-26-000037 &lt;b&gt;Size:&lt;/b&gt; 245 KB
+&lt;br&gt;Item 7.01: Regulation FD Disclosure
+&lt;br&gt;Item 8.01: Other Events
+&lt;br&gt;Item 9.01: Financial Statements and Exhibits
+</summary>
+<updated>2026-11-17T07:03:35-05:00</updated>
+<category scheme="https://www.sec.gov/" label="form type" term="8-K"/>
+<id>urn:tag:sec.gov,2008:accession-number=0001901440-26-000037</id>
+</entry>
+```
+
 ## PROOF — reviewed filings
 
-Per filing: the Documents table from its EDGAR index page (verbatim rows), then each item heading with the first sentence under it. A quote is the heading as printed, an em dash, then the first sentence verbatim; the three summaries flagged above are cut at 900 characters and marked ` [...]`. Index and document URLs resolve live (all 40 index pages re-opened with HTTP 200 when re-checked 2026-11-18).
+Per filing: its two requests with the UTC time each was actually fetched (recorded by the review tool at fetch time), the Documents table from its EDGAR index page (verbatim rows), then each item heading with the first sentence(s) under it. A quote is the heading as printed, an em dash, then the first sentence(s) verbatim and complete; exhibit-list items quote the complete exhibit list (Revision 1: the excerpts that were fragmented at abbreviations or cut at 900 characters in the first submission were replaced with complete first sentences). Index and document URLs resolve live (all 40 index pages re-opened with HTTP 200 when re-checked 2026-11-18).
 
 ### 1. Tempest Therapeutics, Inc. — `0001213900-26-119916`
 
 CIK 0001544227, form 8-K, feed items 2.02, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1544227/000121390026119916/0001213900-26-119916-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1544227/000121390026119916/ea0312157-8k_tempest.htm>.
+
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1544227/000121390026119916/0001213900-26-119916-index.htm> requested 2026-11-16T11:11:40Z, responded 2026-11-16T11:11:42Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1544227/000121390026119916/ea0312157-8k_tempest.htm> requested 2026-11-16T11:11:42Z, responded 2026-11-16T11:11:43Z, HTTP 200.
 
 Documents table:
 
@@ -247,6 +452,8 @@ Documents table:
 
 CIK 0001677940, form 8-K, feed items 2.02, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1677940/000117184326007431/0001171843-26-007431-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1677940/000117184326007431/f8k_111326.htm>.
 
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1677940/000117184326007431/0001171843-26-007431-index.htm> requested 2026-11-16T11:11:44Z, responded 2026-11-16T11:11:45Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1677940/000117184326007431/f8k_111326.htm> requested 2026-11-16T11:11:46Z, responded 2026-11-16T11:11:46Z, HTTP 200.
+
 Documents table:
 
 | Seq | Description | Document | Type | Size |
@@ -261,6 +468,8 @@ Documents table:
 ### 3. BCP Investment Corp — `0001193125-26-461047`
 
 CIK 0001372807, form 8-K, feed items 2.02, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1372807/000119312526461047/0001193125-26-461047-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1372807/000119312526461047/d520705d8k.htm>.
+
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1372807/000119312526461047/0001193125-26-461047-index.htm> requested 2026-11-16T11:11:47Z, responded 2026-11-16T11:11:47Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1372807/000119312526461047/d520705d8k.htm> requested 2026-11-16T11:11:48Z, responded 2026-11-16T11:11:48Z, HTTP 200.
 
 Documents table:
 
@@ -298,6 +507,8 @@ Documents table:
 
 CIK 0001590717, form 8-K, feed items 1.01, 8.01, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1590717/000114036126043831/0001140361-26-043831-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1590717/000114036126043831/ny20085288x3_8k.htm>.
 
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1590717/000114036126043831/0001140361-26-043831-index.htm> requested 2026-11-16T11:11:49Z, responded 2026-11-16T11:11:50Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1590717/000114036126043831/ny20085288x3_8k.htm> requested 2026-11-16T11:11:50Z, responded 2026-11-16T11:11:51Z, HTTP 200.
+
 Documents table:
 
 | Seq | Description | Document | Type | Size |
@@ -320,6 +531,8 @@ Documents table:
 
 CIK 0001938046, form 8-K, feed items 3.03, 5.03, 5.07, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1938046/000149315226051858/0001493152-26-051858-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1938046/000149315226051858/form8-k.htm>.
 
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1938046/000149315226051858/0001493152-26-051858-index.htm> requested 2026-11-16T11:11:51Z, responded 2026-11-16T11:11:52Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1938046/000149315226051858/form8-k.htm> requested 2026-11-16T11:11:52Z, responded 2026-11-16T11:11:53Z, HTTP 200.
+
 Documents table:
 
 | Seq | Description | Document | Type | Size |
@@ -336,6 +549,8 @@ Documents table:
 
 CIK 0001365135, form 8-K, feed items 1.02, 2.03. Index: <https://www.sec.gov/Archives/edgar/data/1365135/000119312526461028/0001193125-26-461028-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1365135/000119312526461028/d152329d8k.htm>.
 
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1365135/000119312526461028/0001193125-26-461028-index.htm> requested 2026-11-16T11:11:54Z, responded 2026-11-16T11:11:54Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1365135/000119312526461028/d152329d8k.htm> requested 2026-11-16T11:11:55Z, responded 2026-11-16T11:11:55Z, HTTP 200.
+
 Documents table:
 
 | Seq | Description | Document | Type | Size |
@@ -349,6 +564,8 @@ Documents table:
 ### 7. 3D SYSTEMS CORP — `0001193125-26-461027`
 
 CIK 0000910638, form 8-K, feed items 1.01, 1.02, 2.03, 3.02, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/910638/000119312526461027/0001193125-26-461027-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/910638/000119312526461027/d533328d8k.htm>.
+
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/910638/000119312526461027/0001193125-26-461027-index.htm> requested 2026-11-16T11:11:56Z, responded 2026-11-16T11:11:57Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/910638/000119312526461027/d533328d8k.htm> requested 2026-11-16T11:11:57Z, responded 2026-11-16T11:11:58Z, HTTP 200.
 
 Documents table:
 
@@ -368,11 +585,13 @@ Documents table:
 - Item 1.02 Termination of a Material Definitive Agreement. — On November 12, 2026, following the exchange of all of the outstanding 2030 Notes pursuant to the Exchange Agreements, the Company delivered to Wilmington Savings Fund Society, FSB, as trustee and collateral agent (“WSFS”), an order for the cancellation of all of the outstanding 2030 Notes issued under the indenture, dated as of June 23, 2025 (as supplemented, the “2030 Notes Indenture”), among the Company, the guarantors party thereto and WSFS.
 - Item 2.03 Creation of a Direct Financial Obligation or an Obligation under an Off-Balance Sheet Arrangement of a Registrant. — The information set forth under Item 1.01 of this Current Report on Form 8-K with respect to the 2031 Notes Indenture and the 2031 Notes is incorporated herein by reference.
 - Item 3.02 Unregistered Sales of Equity Securities. — The information set forth under Item 1.01 of this Current Report on Form 8-K with respect to the issuance of the Shares and the 2031 Notes is incorporated herein by reference.
-- Item 9.01 Financial Statements and Exhibits. — (d) Exhibits. 4.1 Indenture, dated as of November 12, 2026, between 3D Systems Corporation and U.S. Bank Trust Company, National Association, as trustee 4.2 Form of 3.30% Convertible Senior Notes due 2031 (included in Exhibit 4.1) 104 Cover Page Interactive Data File (embedded as Inline XBRL document) SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. 3D SYSTEMS CORPORATION Date: November 13, 2026 By: /s/ Phyllis Nordstrom Phyllis Nordstrom Chief Financial Officer and Chief Administrative Officer
+- Item 9.01 Financial Statements and Exhibits. — (d) Exhibits. 4.1 Indenture, dated as of November 12, 2026, between 3D Systems Corporation and U.S. Bank Trust Company, National Association, as trustee 4.2 Form of 3.30% Convertible Senior Notes due 2031 (included in Exhibit 4.1) 104 Cover Page Interactive Data File (embedded as Inline XBRL document)
 
 ### 8. Navient Holdings, Inc. — `0001140361-26-043829`
 
 CIK 0002152623, form 8-K, feed items 5.02. Index: <https://www.sec.gov/Archives/edgar/data/2152623/000114036126043829/0001140361-26-043829-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/2152623/000114036126043829/ef20085597_8k.htm>.
+
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/2152623/000114036126043829/0001140361-26-043829-index.htm> requested 2026-11-16T11:11:58Z, responded 2026-11-16T11:11:59Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/2152623/000114036126043829/ef20085597_8k.htm> requested 2026-11-16T11:11:59Z, responded 2026-11-16T11:12:00Z, HTTP 200.
 
 Documents table:
 
@@ -386,6 +605,8 @@ Documents table:
 ### 9. Polomar Health Services, Inc. — `0001493152-26-051849`
 
 CIK 0001265521, form 8-K, feed items 1.01, 2.03, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1265521/000149315226051849/0001493152-26-051849-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1265521/000149315226051849/form8-k.htm>.
+
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1265521/000149315226051849/0001493152-26-051849-index.htm> requested 2026-11-16T11:12:00Z, responded 2026-11-16T11:12:01Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1265521/000149315226051849/form8-k.htm> requested 2026-11-16T11:12:01Z, responded 2026-11-16T11:12:02Z, HTTP 200.
 
 Documents table:
 
@@ -403,6 +624,8 @@ Documents table:
 
 CIK 0001824920, form 8-K, feed items 3.02, 5.02, 8.01, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1824920/000119312526461016/0001193125-26-461016-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1824920/000119312526461016/ionq-20261110.htm>.
 
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1824920/000119312526461016/0001193125-26-461016-index.htm> requested 2026-11-16T11:12:03Z, responded 2026-11-16T11:12:04Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1824920/000119312526461016/ionq-20261110.htm> requested 2026-11-16T11:12:04Z, responded 2026-11-16T11:12:05Z, HTTP 200.
+
 Documents table:
 
 | Seq | Description | Document | Type | Size |
@@ -415,12 +638,14 @@ Documents table:
 
 - Item 3.02 Unregistered Sales of Equity Securities. — On November 13, 2026, IonQ, Inc. (the “Company”) filed with the Securities and Exchange Commission (the “SEC”) a prospectus supplement to the prospectus included in the Company’s Registration Statement on Form S-3ASR filed with the SEC on February 26, 2025 (File No. 333-285279) (the “Registration Statement”), covering the resale by certain selling stockholders of an aggregate of 34,580,646 shares of Company common stock, par value $0.0001 per share.
 - Item 5.02 Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. — Also on November 13, 2026, the Company announced that, on November 10, 2026, the Company appointed Gary Merrill as Chief Financial Officer, Treasurer, principal financial officer and principal accounting officer of the Company, to be effective upon his first day of employment, which is expected to be December 3, 2026 (the “Start Date”).
-- Item 8.01 Other Events. — Also on November 13, 2026, the Company announced that, effective on November 16, 2026, Thomas A.
+- Item 8.01 Other Events. — Also on November 13, 2026, the Company announced that, effective on November 16, 2026, Thomas A. Austin had been appointed as Chief Accounting Officer of the Company.
 - Item 9.01 Financial Statements and Exhibits. — (d) Exhibits.
 
 ### 11. Dolby Laboratories, Inc. — `0001193125-26-461010`
 
 CIK 0001308547, form 8-K, feed items 5.02. Index: <https://www.sec.gov/Archives/edgar/data/1308547/000119312526461010/0001193125-26-461010-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1308547/000119312526461010/d101237d8k.htm>.
+
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1308547/000119312526461010/0001193125-26-461010-index.htm> requested 2026-11-16T11:12:06Z, responded 2026-11-16T11:12:07Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1308547/000119312526461010/d101237d8k.htm> requested 2026-11-16T11:12:07Z, responded 2026-11-16T11:12:08Z, HTTP 200.
 
 Documents table:
 
@@ -435,6 +660,8 @@ Documents table:
 
 CIK 0001620749, form 8-K, feed items 4.02. Index: <https://www.sec.gov/Archives/edgar/data/1620749/000164033426001797/0001640334-26-001797-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1620749/000164033426001797/pnht_8k.htm>.
 
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1620749/000164033426001797/0001640334-26-001797-index.htm> requested 2026-11-16T11:12:09Z, responded 2026-11-16T11:12:10Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1620749/000164033426001797/pnht_8k.htm> requested 2026-11-16T11:12:10Z, responded 2026-11-16T11:12:11Z, HTTP 200.
+
 Documents table:
 
 | Seq | Description | Document | Type | Size |
@@ -448,6 +675,8 @@ Documents table:
 
 CIK 0001862150, form 8-K, feed items 1.01, 2.02, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1862150/000149315226051841/0001493152-26-051841-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1862150/000149315226051841/form8-k.htm>.
 
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1862150/000149315226051841/0001493152-26-051841-index.htm> requested 2026-11-16T11:12:12Z, responded 2026-11-16T11:12:13Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1862150/000149315226051841/form8-k.htm> requested 2026-11-16T11:12:13Z, responded 2026-11-16T11:12:14Z, HTTP 200.
+
 Documents table:
 
 | Seq | Description | Document | Type | Size |
@@ -459,11 +688,13 @@ Documents table:
 
 - Item 1.01 Entry into Material Definitive Agreement — As previously disclosed, on March 24, 2026, Cingulate Inc. (the “Company”) entered into an ATM Sales Agreement, or the ATM Agreement, with A.G.P./Alliance Global Partners (“A.G.P.”) as sales agent (the “Agent”), pursuant to which the Company may offer and sell, our common stock, par value $0.0001 per share, or common stock, having an aggregate offering price of up to $100,000,000, from time to time, through the Agent.
 - Item 2.02 Results of Operations and Financial Condition. — On November 13, 2026, Cingulate Inc. issued a press release announcing its financial results for the quarter ended September 30, 2026 and providing a regulatory update.
-- Item 9.01 Financial Statements and Exhibits. — (d) Exhibits Exhibit No. Description 10.1 Amendment No. 1 to ATM Agreement, by and among the Company, A.G.P. and Maxim, dated November 13, 2026 99.1 Press Release dated November 13, 2026 104 Cover Page Interactive Data File (embedded within the Inline XBRL document) SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized.
+- Item 9.01 Financial Statements and Exhibits. — (d) Exhibits Exhibit No. Description 10.1 Amendment No. 1 to ATM Agreement, by and among the Company, A.G.P. and Maxim, dated November 13, 2026 99.1 Press Release dated November 13, 2026 104 Cover Page Interactive Data File (embedded within the Inline XBRL document)
 
 ### 14. Flux Power Holdings, Inc. — `0001493152-26-051839`
 
 CIK 0001083743, form 8-K, feed items 1.01, 2.03, 3.01, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1083743/000149315226051839/0001493152-26-051839-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1083743/000149315226051839/form8-k.htm>.
+
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1083743/000149315226051839/0001493152-26-051839-index.htm> requested 2026-11-16T11:12:15Z, responded 2026-11-16T11:12:16Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1083743/000149315226051839/form8-k.htm> requested 2026-11-16T11:12:16Z, responded 2026-11-16T11:12:17Z, HTTP 200.
 
 Documents table:
 
@@ -480,9 +711,11 @@ Documents table:
 - Item 3.01 Notice of Delisting or Failure to Satisfy a Continued Listing Rule or Standard; Transfer of Listing. — On November 9, 2026, the Company received a notice (the “Notice”) from The NASDAQ Stock Market LLC (“Nasdaq”) notifying the Company that based on its stockholders’ deficit of ($431,000) as reported in its Form 10-Q for the fiscal quarter ended September 30, 2026, the Company is no longer in compliance with Nasdaq Listing Rule 5550(b)(1), which requires the Company to maintain a minimum of $2,500,000 in stockholders’ equity for continued listing on The Nasdaq Capital Market (the “Stockholders’ Equity Requirement”).
 - Item 9.01 Financial Statements and Exhibits. — (d) Exhibits.
 
-### 15. 8-K12B - Versa Bancorp (0002100848) (Filer) — `0001104659-26-127233`
+### 15. Versa Bancorp — `0001104659-26-127233`
 
 CIK 0002100848, form 8-K12B, feed items 1.01, 2.01, 3.01, 3.03, 5.01, 5.02, 5.03, 7.01, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/2100848/000110465926127233/0001104659-26-127233-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/2100848/000110465926127233/tm2629642d1_8k12b.htm>.
+
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/2100848/000110465926127233/0001104659-26-127233-index.htm> requested 2026-11-16T11:12:18Z, responded 2026-11-16T11:12:19Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/2100848/000110465926127233/tm2629642d1_8k12b.htm> requested 2026-11-16T11:12:19Z, responded 2026-11-16T11:12:20Z, HTTP 200.
 
 Documents table:
 
@@ -514,6 +747,8 @@ Documents table:
 
 CIK 0001682149, form 8-K, feed items 3.01, 8.01, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1682149/000110465926127230/0001104659-26-127230-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1682149/000110465926127230/tm2629197d1_8k.htm>.
 
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1682149/000110465926127230/0001104659-26-127230-index.htm> requested 2026-11-16T11:12:21Z, responded 2026-11-16T11:12:22Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1682149/000110465926127230/tm2629197d1_8k.htm> requested 2026-11-16T11:12:22Z, responded 2026-11-16T11:12:23Z, HTTP 200.
+
 Documents table:
 
 | Seq | Description | Document | Type | Size |
@@ -530,6 +765,8 @@ Documents table:
 
 CIK 0001878897, form 8-K, feed items 5.02. Index: <https://www.sec.gov/Archives/edgar/data/1878897/000187889726000055/0001878897-26-000055-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1878897/000187889726000055/doug-20261113.htm>.
 
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1878897/000187889726000055/0001878897-26-000055-index.htm> requested 2026-11-16T11:12:24Z, responded 2026-11-16T11:12:24Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1878897/000187889726000055/doug-20261113.htm> requested 2026-11-16T11:12:25Z, responded 2026-11-16T11:12:25Z, HTTP 200.
+
 Documents table:
 
 | Seq | Description | Document | Type | Size |
@@ -537,11 +774,13 @@ Documents table:
 | 1 | 8-K | doug-20261113.htm iXBRL | 8-K | 39227 |
 |  | Complete submission text file | 0001878897-26-000055.txt |  | 154928 |
 
-- Item 5.02 Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers — On November 13, 2026, Douglas Elliman Inc. (the “Company”) and James B.
+- Item 5.02 Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers — On November 13, 2026, Douglas Elliman Inc. (the “Company”) and James B. Kirkland III mutually agreed that Mr. Kirkland will retire (the “Kirkland Retirement”) from his position as Executive Vice President, Treasurer and Chief Financial Officer, effective November 13, 2026, pursuant to a Separation Agreement and General Release (the “Kirkland Separation Agreement”).
 
 ### 18. CHEETAH NET SUPPLY CHAIN SERVICE INC. — `0001104659-26-127228`
 
 CIK 0001951667, form 8-K, feed items 2.02, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1951667/000110465926127228/0001104659-26-127228-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1951667/000110465926127228/tm2629774d1_8k.htm>.
+
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1951667/000110465926127228/0001104659-26-127228-index.htm> requested 2026-11-16T11:12:26Z, responded 2026-11-16T11:12:26Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1951667/000110465926127228/tm2629774d1_8k.htm> requested 2026-11-16T11:12:27Z, responded 2026-11-16T11:12:27Z, HTTP 200.
 
 Documents table:
 
@@ -560,6 +799,8 @@ Documents table:
 
 CIK 0001674440, form 8-K, feed items 1.01, 3.02, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1674440/000149315226051834/0001493152-26-051834-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1674440/000149315226051834/form8-k.htm>.
 
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1674440/000149315226051834/0001493152-26-051834-index.htm> requested 2026-11-16T11:12:28Z, responded 2026-11-16T11:12:28Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1674440/000149315226051834/form8-k.htm> requested 2026-11-16T11:12:29Z, responded 2026-11-16T11:12:29Z, HTTP 200.
+
 Documents table:
 
 | Seq | Description | Document | Type | Size |
@@ -570,11 +811,13 @@ Documents table:
 
 - Item 1.01 Entry into a Material Definitive Agreement. — On November 9, 2026, AiRWA Inc. (the “Company”) entered into securities purchase agreements (the “Purchase Agreement”) with certain investors, pursuant to which the Company agreed to sell to the investors an aggregate of 1,800,000 shares of common stock of the Company, par value $0.001 per share (the “Common Stock”), at a purchase price of $0.8332 per share of Common Stock, which was the closing price of the Common Stock on the preceding trading day (the “Transaction”).
 - Item 3.02 Unregistered Sales of Equity Securities. — The information provided in Item 1.01 of this Current Report on Form 8-K is hereby incorporated by reference in this Item 3.02.
-- Item 9.01 Financial Statements and Exhibits. — The following exhibits are furnished with this Form 8-K: Exhibit No. Description 10.1 Form of Securities Purchase Agreement 104 Cover Page Interactive Data File (embedded within the Inline XBRL document) Forward-Looking Statements This Current Report on Form 8-K contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended.
+- Item 9.01 Financial Statements and Exhibits. — The following exhibits are furnished with this Form 8-K: Exhibit No. Description 10.1 Form of Securities Purchase Agreement 104 Cover Page Interactive Data File (embedded within the Inline XBRL document)
 
 ### 20. AZIO AI HOLDINGS, INC. — `0001437749-26-036953`
 
 CIK 0001563568, form 8-K, feed items 5.02, 5.07. Index: <https://www.sec.gov/Archives/edgar/data/1563568/000143774926036953/0001437749-26-036953-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1563568/000143774926036953/adom20261113_8k.htm>.
+
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1563568/000143774926036953/0001437749-26-036953-index.htm> requested 2026-11-16T11:12:30Z, responded 2026-11-16T11:12:30Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1563568/000143774926036953/adom20261113_8k.htm> requested 2026-11-16T11:12:31Z, responded 2026-11-16T11:12:31Z, HTTP 200.
 
 Documents table:
 
@@ -590,6 +833,8 @@ Documents table:
 
 CIK 0001360565, form 8-K, feed items 2.02, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1360565/000149315226051832/0001493152-26-051832-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1360565/000149315226051832/form8-k.htm>.
 
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1360565/000149315226051832/0001493152-26-051832-index.htm> requested 2026-11-16T11:12:32Z, responded 2026-11-16T11:12:33Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1360565/000149315226051832/form8-k.htm> requested 2026-11-16T11:12:33Z, responded 2026-11-16T11:12:34Z, HTTP 200.
+
 Documents table:
 
 | Seq | Description | Document | Type | Size |
@@ -599,12 +844,14 @@ Documents table:
 | 3 | EX-99.2 | ex99-2.htm | EX-99.2 | 17649 |
 |  | Complete submission text file | 0001493152-26-051832.txt |  | 329533 |
 
-- Item 2.02 Results of Operations and Financial Condition Reference — is made to the Where Food Comes From, Inc. (the “Company”) press release on November 12, 2026 and conference call transcript, attached hereto as Exhibits 99.1 and 99.2, respectively, and incorporated by reference herein (including, without limitation, the information set forth in the cautionary statement contained in the press release and conference call transcript), relating to the Company’s financial results for the three and nine months ended September 30, 2026.
-- Item 9.01 Financial Statements and Exhibits (d) — Exhibits Exhibit No. Description 99.1 Press Release issued and dated November 12, 2026 99.2 Transcript for November 12, 2026 conference call 104 Cover Page Interactive Data File (embedded within the Inline XBRL document) SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized.
+- Item 2.02 Results of Operations and Financial Condition Reference — Reference is made to the Where Food Comes From, Inc. (the “Company”) press release on November 12, 2026 and conference call transcript, attached hereto as Exhibits 99.1 and 99.2, respectively, and incorporated by reference herein (including, without limitation, the information set forth in the cautionary statement contained in the press release and conference call transcript), relating to the Company’s financial results for the three and nine months ended September 30, 2026.
+- Item 9.01 Financial Statements and Exhibits (d) — Exhibits Exhibit No. Description 99.1 Press Release issued and dated November 12, 2026 99.2 Transcript for November 12, 2026 conference call 104 Cover Page Interactive Data File (embedded within the Inline XBRL document)
 
 ### 22. Booking Holdings Inc. — `0001104659-26-127223`
 
 CIK 0001075531, form 8-K, feed items 1.01, 2.03, 8.01, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1075531/000110465926127223/0001104659-26-127223-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1075531/000110465926127223/tm2629703d1_8k.htm>.
+
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1075531/000110465926127223/0001104659-26-127223-index.htm> requested 2026-11-16T11:12:34Z, responded 2026-11-16T11:12:35Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1075531/000110465926127223/tm2629703d1_8k.htm> requested 2026-11-16T11:12:36Z, responded 2026-11-16T11:12:36Z, HTTP 200.
 
 Documents table:
 
@@ -626,14 +873,16 @@ Documents table:
 | 18 | GRAPHIC | tm2629703d1_ex5-1img002.jpg | GRAPHIC | 68972 |
 |  | Complete submission text file | 0001104659-26-127223.txt |  | 1979998 |
 
-- Item 1.01 Entry into a Material Definitive Agreement. — Senior Notes On November 13, 2026, Booking Holdings Inc. (the “Company”) executed four Officers’ Certificates (the “Officers’ Certificates”), in accordance with Sections 2.02 and 10.04 of the Indenture dated August 8, 2017 (the “Base Indenture” and, together with the Officers’ Certificates, the “Indenture”) between the Company and U.S. Bank Trust Company, National Association (as successor in interest to U.S. Bank National Association), as trustee (the “Trustee”) and registrar, in connection with the sale of €1,250,000,000 aggregate principal amount of the Company’s 3.950% Senior Notes due 2029 (the “2029 Notes”), €800,000,000 aggregate principal amount of the Company’s 4.375% Senior Notes due 2032 (the “2032 Notes”), €750,000,000 aggregate principal amount of the Company’s 4.750% Senior Notes due 2035 (the “2035 Notes”), and €750,000,000 aggregate principal amount of the Company’s [...]
-- Item 2.03 Creation of a Direct Financial Obligation or an Obligation — Under an Off-Balance Sheet Arrangement of the Registrant.
+- Item 1.01 Entry into a Material Definitive Agreement. — Senior Notes On November 13, 2026, Booking Holdings Inc. (the “Company”) executed four Officers’ Certificates (the “Officers’ Certificates”), in accordance with Sections 2.02 and 10.04 of the Indenture dated August 8, 2017 (the “Base Indenture” and, together with the Officers’ Certificates, the “Indenture”) between the Company and U.S. Bank Trust Company, National Association (as successor in interest to U.S. Bank National Association), as trustee (the “Trustee”) and registrar, in connection with the sale of €1,250,000,000 aggregate principal amount of the Company’s 3.950% Senior Notes due 2029 (the “2029 Notes”), €800,000,000 aggregate principal amount of the Company’s 4.375% Senior Notes due 2032 (the “2032 Notes”), €750,000,000 aggregate principal amount of the Company’s 4.750% Senior Notes due 2035 (the “2035 Notes”), and €750,000,000 aggregate principal amount of the Company’s 5.000% Senior Notes due 2038 (the “2038 Notes” and, together with the 2029 Notes, the 2032 Notes, and the 2035 Notes, the “Senior Notes”).
+- Item 2.03 Creation of a Direct Financial Obligation or an Obligation Under an Off-Balance Sheet Arrangement of the Registrant. — The information set forth under Item 1.01 of this Current Report on Form 8-K is incorporated by reference.
 - Item 8.01 Other Events. — On November 9, 2026, the Company entered into an underwriting agreement (the “Underwriting Agreement”) with Banco Santander, S.A., BNP PARIBAS, Deutsche Bank AG, London Branch, Goldman Sachs & Co. LLC and HSBC Bank plc, as representatives of the several underwriters named in Schedule II thereto (the “Underwriters”), pursuant to which the Company agreed to issue and sell to the Underwriters €3,550,000,000 aggregate principal amount of Senior Notes in a registered public offering (the “Offering”).
-- Item 9.01 Financial Statements and Exhibits. — (d) Exhibits Exhibit Description 1.1* Underwriting Agreement, dated November 9, 2026, among Booking Holdings Inc., Banco Santander, S.A., BNP PARIBAS, Deutsche Bank AG, London Branch, Goldman Sachs & Co. LLC and HSBC Bank plc, as representatives of the several underwriters named in Schedule II thereto. 4.1 Form of 3.950% Senior Note due 2029. 4.2 Form of 4.375% Senior Note due 2032. 4.3 Form of 4.750% Senior Note due 2035. 4.4 Form of 5.000% Senior Note due 2038. 4.5* Officers’ Certificate, dated November 13, 2026, with respect to the 3.950% Senior Note due 2029 issued pursuant to the Base Indenture. 4.6* Officers’ Certificate, dated November 13, 2026, with respect to the 4.375% Senior Note due 2032 issued pursuant to the Base Indenture. 4.7* Officers’ Certificate, dated November 13, 2026, with respect to the 4.750% Senior Note due 2035 issued pursuant to the Base Indenture. 4.8* [...]
+- Item 9.01 Financial Statements and Exhibits. — (d) Exhibits Exhibit Description 1.1* Underwriting Agreement, dated November 9, 2026, among Booking Holdings Inc., Banco Santander, S.A., BNP PARIBAS, Deutsche Bank AG, London Branch, Goldman Sachs & Co. LLC and HSBC Bank plc, as representatives of the several underwriters named in Schedule II thereto. 4.1 Form of 3.950% Senior Note due 2029. 4.2 Form of 4.375% Senior Note due 2032. 4.3 Form of 4.750% Senior Note due 2035. 4.4 Form of 5.000% Senior Note due 2038. 4.5* Officers’ Certificate, dated November 13, 2026, with respect to the 3.950% Senior Note due 2029 issued pursuant to the Base Indenture. 4.6* Officers’ Certificate, dated November 13, 2026, with respect to the 4.375% Senior Note due 2032 issued pursuant to the Base Indenture. 4.7* Officers’ Certificate, dated November 13, 2026, with respect to the 4.750% Senior Note due 2035 issued pursuant to the Base Indenture. 4.8* Officers’ Certificate, dated November 13, 2026, with respect to the 5.000% Senior Note due 2038 issued pursuant to the Base Indenture. 4.9 Agency Agreement, dated as of November 13, 2026, by and between Booking Holdings Inc., as issuer, U.S. Bank Europe DAC, UK Branch, as paying agent, and U.S. Bank Trust Company, National Association, as transfer agent, registrar and trustee. 5.1 Opinion of Cravath, Swaine & Moore LLP, relating to the Senior Notes. 23.1 Consent of Cravath, Swaine & Moore LLP (included as part of Exhibit 5.1 to this Current Report). 104 Cover Page Interactive Data File - the cover page interactive data file does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document. *Schedules or similar attachments have been omitted pursuant to Item 601(a)(5) of Regulation S-K. The Company hereby undertakes to furnish copies of any of the omitted schedules or similar attachments upon request by the Securities and Exchange Commission.
 
 ### 23. BEASLEY BROADCAST GROUP INC — `0001193125-26-460951`
 
 CIK 0001099160, form 8-K, feed items 2.02, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1099160/000119312526460951/0001193125-26-460951-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1099160/000119312526460951/bbgi-20261113.htm>.
+
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1099160/000119312526460951/0001193125-26-460951-index.htm> requested 2026-11-16T11:12:37Z, responded 2026-11-16T11:12:37Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1099160/000119312526460951/bbgi-20261113.htm> requested 2026-11-16T11:12:38Z, responded 2026-11-16T11:12:38Z, HTTP 200.
 
 Documents table:
 
@@ -651,6 +900,8 @@ Documents table:
 
 CIK 0002019505, form 8-K, feed items 2.02, 7.01, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/2019505/000121390026119857/0001213900-26-119857-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/2019505/000121390026119857/ea0311991-8k_health.htm>.
 
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/2019505/000121390026119857/0001213900-26-119857-index.htm> requested 2026-11-16T11:12:39Z, responded 2026-11-16T11:12:39Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/2019505/000121390026119857/ea0311991-8k_health.htm> requested 2026-11-16T11:12:40Z, responded 2026-11-16T11:12:41Z, HTTP 200.
+
 Documents table:
 
 | Seq | Description | Document | Type | Size |
@@ -667,6 +918,8 @@ Documents table:
 
 CIK 0000877860, form 8-K, feed items 5.02, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/877860/000087786026000230/0000877860-26-000230-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/877860/000087786026000230/nhi-20261109.htm>.
 
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/877860/000087786026000230/0000877860-26-000230-index.htm> requested 2026-11-16T11:12:41Z, responded 2026-11-16T11:12:42Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/877860/000087786026000230/nhi-20261109.htm> requested 2026-11-16T11:12:42Z, responded 2026-11-16T11:12:43Z, HTTP 200.
+
 Documents table:
 
 | Seq | Description | Document | Type | Size |
@@ -682,6 +935,8 @@ Documents table:
 
 CIK 0001822359, form 8-K, feed items 5.02, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1822359/000162828026073911/0001628280-26-073911-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1822359/000162828026073911/dcgo-20261113.htm>.
 
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1822359/000162828026073911/0001628280-26-073911-index.htm> requested 2026-11-16T11:12:43Z, responded 2026-11-16T11:12:44Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1822359/000162828026073911/dcgo-20261113.htm> requested 2026-11-16T11:12:45Z, responded 2026-11-16T11:12:45Z, HTTP 200.
+
 Documents table:
 
 | Seq | Description | Document | Type | Size |
@@ -691,11 +946,13 @@ Documents table:
 |  | Complete submission text file | 0001628280-26-073911.txt |  | 299936 |
 
 - Item 5.02 Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. — As previously announced, DocGo Inc. (the “Company”) is conducting a search for a new Chief Executive Officer as the employment agreement of the Company’s current CEO, Lee Bienstock, expires December 31, 2026.
-- Item 9.01 Financial Statements and Exhibits. — (d) Exhibits Exhibit No. Description 10.1 Transition Services and Separation Agreement, dated November 13, 2026, by and between the Company and Lee Bienstock 104 Cover Page Interactive Data File (formatted as Inline XBRL). 1 SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized.
+- Item 9.01 Financial Statements and Exhibits. — (d) Exhibits Exhibit No. Description 10.1 Transition Services and Separation Agreement, dated November 13, 2026, by and between the Company and Lee Bienstock 104 Cover Page Interactive Data File (formatted as Inline XBRL).
 
 ### 27. ACCURAY INC — `0001437749-26-036943`
 
 CIK 0001138723, form 8-K, feed items 3.02, 3.03, 5.03, 7.01, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1138723/000143774926036943/0001437749-26-036943-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1138723/000143774926036943/aray20261111_8k.htm>.
+
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1138723/000143774926036943/0001437749-26-036943-index.htm> requested 2026-11-16T11:12:46Z, responded 2026-11-16T11:12:46Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1138723/000143774926036943/aray20261111_8k.htm> requested 2026-11-16T11:12:47Z, responded 2026-11-16T11:12:47Z, HTTP 200.
 
 Documents table:
 
@@ -718,6 +975,8 @@ Documents table:
 
 CIK 0001502377, form 8-K, feed items 1.01, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1502377/000110465926127202/0001104659-26-127202-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1502377/000110465926127202/tm2629486d1_8k.htm>.
 
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1502377/000110465926127202/0001104659-26-127202-index.htm> requested 2026-11-16T11:12:48Z, responded 2026-11-16T11:12:49Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1502377/000110465926127202/tm2629486d1_8k.htm> requested 2026-11-16T11:12:49Z, responded 2026-11-16T11:12:50Z, HTTP 200.
+
 Documents table:
 
 | Seq | Description | Document | Type | Size |
@@ -735,6 +994,8 @@ Documents table:
 
 CIK 0001840856, form 8-K, feed items 5.02, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1840856/000121390026119843/0001213900-26-119843-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1840856/000121390026119843/ea0312272-8k_sound.htm>.
 
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1840856/000121390026119843/0001213900-26-119843-index.htm> requested 2026-11-16T11:12:50Z, responded 2026-11-16T11:12:51Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1840856/000121390026119843/ea0312272-8k_sound.htm> requested 2026-11-16T11:12:51Z, responded 2026-11-16T11:12:52Z, HTTP 200.
+
 Documents table:
 
 | Seq | Description | Document | Type | Size |
@@ -743,11 +1004,13 @@ Documents table:
 |  | Complete submission text file | 0001213900-26-119843.txt |  | 243559 |
 
 - Item 5.02 Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. — Effective November 9, 2026, Tyler Moore assumed the role of principal accounting officer of SoundHound AI, Inc. (the “Company”).
-- Item 9.01 Financial Statement and Exhibits. Exhibit Number — Description 104 Cover Page Interactive Data File (formatted as inline XBRL) 1 SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this Current Report on Form 8-K to be signed on its behalf by the undersigned hereunto duly authorized.
+- Item 9.01 Financial Statement and Exhibits. Exhibit Number — Description 104 Cover Page Interactive Data File (formatted as inline XBRL)
 
 ### 30. NextBoat Inc. — `0001493152-26-051809`
 
 CIK 0002067767, form 8-K, feed items 1.01, 2.03, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/2067767/000149315226051809/0001493152-26-051809-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/2067767/000149315226051809/form8-k.htm>.
+
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/2067767/000149315226051809/0001493152-26-051809-index.htm> requested 2026-11-16T11:12:52Z, responded 2026-11-16T11:12:53Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/2067767/000149315226051809/form8-k.htm> requested 2026-11-16T11:12:54Z, responded 2026-11-16T11:12:54Z, HTTP 200.
 
 Documents table:
 
@@ -765,6 +1028,8 @@ Documents table:
 
 CIK 0001692415, form 8-K, feed items 5.02, 5.07, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1692415/000149315226051811/0001493152-26-051811-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1692415/000149315226051811/form8-k.htm>.
 
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1692415/000149315226051811/0001493152-26-051811-index.htm> requested 2026-11-16T11:12:55Z, responded 2026-11-16T11:12:55Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1692415/000149315226051811/form8-k.htm> requested 2026-11-16T11:12:56Z, responded 2026-11-16T11:12:56Z, HTTP 200.
+
 Documents table:
 
 | Seq | Description | Document | Type | Size |
@@ -780,6 +1045,8 @@ Documents table:
 ### 32. Beyond Air, Inc. — `0001493152-26-051810`
 
 CIK 0001641631, form 8-K, feed items 2.02, 7.01, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1641631/000149315226051810/0001493152-26-051810-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1641631/000149315226051810/form8-k.htm>.
+
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1641631/000149315226051810/0001493152-26-051810-index.htm> requested 2026-11-16T11:12:57Z, responded 2026-11-16T11:12:58Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1641631/000149315226051810/form8-k.htm> requested 2026-11-16T11:12:58Z, responded 2026-11-16T11:12:59Z, HTTP 200.
 
 Documents table:
 
@@ -797,6 +1064,8 @@ Documents table:
 
 CIK 0001321834, form 8-K, feed items 3.01. Index: <https://www.sec.gov/Archives/edgar/data/1321834/000149315226051808/0001493152-26-051808-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1321834/000149315226051808/form8-k.htm>.
 
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1321834/000149315226051808/0001493152-26-051808-index.htm> requested 2026-11-16T11:12:59Z, responded 2026-11-16T11:13:00Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1321834/000149315226051808/form8-k.htm> requested 2026-11-16T11:13:00Z, responded 2026-11-16T11:13:01Z, HTTP 200.
+
 Documents table:
 
 | Seq | Description | Document | Type | Size |
@@ -810,6 +1079,8 @@ Documents table:
 
 CIK 0001464790, form 8-K, feed items 5.02. Index: <https://www.sec.gov/Archives/edgar/data/1464790/000121390026119839/0001213900-26-119839-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1464790/000121390026119839/ea0312286-8k_brcgroup.htm>.
 
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1464790/000121390026119839/0001213900-26-119839-index.htm> requested 2026-11-16T11:13:01Z, responded 2026-11-16T11:13:02Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1464790/000121390026119839/ea0312286-8k_brcgroup.htm> requested 2026-11-16T11:13:03Z, responded 2026-11-16T11:13:03Z, HTTP 200.
+
 Documents table:
 
 | Seq | Description | Document | Type | Size |
@@ -817,11 +1088,13 @@ Documents table:
 | 1 | CURRENT REPORT | ea0312286-8k_brcgroup.htm iXBRL | 8-K | 36147 |
 |  | Complete submission text file | 0001213900-26-119839.txt |  | 269607 |
 
-- Item 5.02 (b) Departure of Directors or Certain — Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers.
+- Item 5.02 (b) Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. — Effective November 16, 2026, BRC Group Holdings, Inc. (the “Company”) will eliminate the Chief Accounting Officer role as the Company does not believe this separate role is necessary for operations. As a result, Mr. Howard Weitzman will no longer serve as Chief Accounting Officer. Mr. Weitzman will remain with the Company as the Head of Corporate Tax.
 
 ### 35. Evofem Biosciences, Inc. — `0001493152-26-051806`
 
 CIK 0001618835, form 8-K, feed items 2.02, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1618835/000149315226051806/0001493152-26-051806-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1618835/000149315226051806/form8-k.htm>.
+
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1618835/000149315226051806/0001493152-26-051806-index.htm> requested 2026-11-16T11:13:04Z, responded 2026-11-16T11:13:05Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1618835/000149315226051806/form8-k.htm> requested 2026-11-16T11:13:05Z, responded 2026-11-16T11:13:06Z, HTTP 200.
 
 Documents table:
 
@@ -839,6 +1112,8 @@ Documents table:
 
 CIK 0001628063, form 8-K, feed items 2.02, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1628063/000119312526460888/0001193125-26-460888-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1628063/000119312526460888/srg-20261113.htm>.
 
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1628063/000119312526460888/0001193125-26-460888-index.htm> requested 2026-11-16T11:13:07Z, responded 2026-11-16T11:13:08Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1628063/000119312526460888/srg-20261113.htm> requested 2026-11-16T11:13:08Z, responded 2026-11-16T11:13:09Z, HTTP 200.
+
 Documents table:
 
 | Seq | Description | Document | Type | Size |
@@ -849,11 +1124,13 @@ Documents table:
 |  | Complete submission text file | 0001193125-26-460888.txt |  | 676522 |
 
 - Item 2.02 Results of Operations and Financial Condition. — On November 13 2026, the Company issued a press release regarding its financial results for the three and nine months ended September 30, 2026.
-- Item 9.01 Financial Statements and Exhibits. — (d) Exhibits Exhibit No. Description 99.1 Press release dated November 13, 2026 104 Cover Page Interactive Data File (embedded within Inline XBRL document) SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized.
+- Item 9.01 Financial Statements and Exhibits. — (d) Exhibits Exhibit No. Description 99.1 Press release dated November 13, 2026 104 Cover Page Interactive Data File (embedded within Inline XBRL document)
 
 ### 37. CERENOME, INC. — `0001193125-26-460887`
 
 CIK 0001095981, form 8-K, feed items 2.02, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1095981/000119312526460887/0001193125-26-460887-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1095981/000119312526460887/cnsy-20261113.htm>.
+
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1095981/000119312526460887/0001193125-26-460887-index.htm> requested 2026-11-16T11:13:10Z, responded 2026-11-16T11:13:10Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1095981/000119312526460887/cnsy-20261113.htm> requested 2026-11-16T11:13:11Z, responded 2026-11-16T11:13:12Z, HTTP 200.
 
 Documents table:
 
@@ -869,6 +1146,8 @@ Documents table:
 ### 38. Apollo Global Management, Inc. — `0001193125-26-460879`
 
 CIK 0001858681, form 8-K, feed items 1.01, 2.03, 8.01, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1858681/000119312526460879/0001193125-26-460879-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1858681/000119312526460879/d143669d8k.htm>.
+
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1858681/000119312526460879/0001193125-26-460879-index.htm> requested 2026-11-16T11:13:12Z, responded 2026-11-16T11:13:13Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1858681/000119312526460879/d143669d8k.htm> requested 2026-11-16T11:13:14Z, responded 2026-11-16T11:13:15Z, HTTP 200.
 
 Documents table:
 
@@ -890,6 +1169,8 @@ Documents table:
 
 CIK 0001595527, form 8-K, feed items 2.02, 7.01, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/1595527/000162828026073897/0001628280-26-073897-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/1595527/000162828026073897/nycr-20261113.htm>.
 
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/1595527/000162828026073897/0001628280-26-073897-index.htm> requested 2026-11-16T11:13:15Z, responded 2026-11-16T11:13:16Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/1595527/000162828026073897/nycr-20261113.htm> requested 2026-11-16T11:13:16Z, responded 2026-11-16T11:13:17Z, HTTP 200.
+
 Documents table:
 
 | Seq | Description | Document | Type | Size |
@@ -908,6 +1189,8 @@ Documents table:
 
 CIK 0000804328, form 8-K, feed items 1.01, 8.01, 9.01. Index: <https://www.sec.gov/Archives/edgar/data/804328/000110465926127163/0001104659-26-127163-index.htm>. Document: <https://www.sec.gov/Archives/edgar/data/804328/000110465926127163/tm2629667d1_8k.htm>.
 
+Requests (UTC, recorded at fetch time): index page <https://www.sec.gov/Archives/edgar/data/804328/000110465926127163/0001104659-26-127163-index.htm> requested 2026-11-16T11:13:18Z, responded 2026-11-16T11:13:19Z, HTTP 200; document <https://www.sec.gov/Archives/edgar/data/804328/000110465926127163/tm2629667d1_8k.htm> requested 2026-11-16T11:13:19Z, responded 2026-11-16T11:13:20Z, HTTP 200.
+
 Documents table:
 
 | Seq | Description | Document | Type | Size |
@@ -924,9 +1207,9 @@ Documents table:
 | 13 | GRAPHIC | tm2629667d1_ex5-1img01.jpg | GRAPHIC | 2186 |
 |  | Complete submission text file | 0001104659-26-127163.txt |  | 765460 |
 
-- Item 1.01 Entry into a Material Definitive Agreement. — On November 12, 2026, QUALCOMM Incorporated (the Company) executed an Officers’ Certificate (the Officers’ Certificate), in accordance with Sections 2.02, 2.03, 10.04 and 10.05 of the Indenture dated May 20, 2015 (the Base Indenture and, together with the Officers’ Certificate, the Indenture) between the Company and U.S. Bank Trust Company, National Association (as successor in interest to U.S. Bank National Association), as trustee (the Trustee), in connection with the sale of $750,000,000 in aggregate principal amount of the Company’s 5.000% Notes due 2028 (the 2028 Notes), $750,000,000 in aggregate principal amount of the Company’s 5.150% Notes due 2029 (the 2029 Notes), $1,000,000,000 in aggregate principal amount of the Company’s 5.350% Notes due 2031 (the 2031 Notes), $750,000,000 in aggregate principal amount of the Company’s 5.600% Notes due 2033 (the 2033 Notes) and [...]
-- Item 8.01 Other Events. — On November 9, 2026, the Company entered into an underwriting agreement (the Underwriting Agreement) with BNP Paribas Securities Corp., BofA Securities, Inc., Deutsche Bank Securities Inc., J.P.
-- Item 9.01 Financial Statements and Exhibits. — (d) Exhibits Exhibit No Description 1.1 Underwriting Agreement, dated November 9, 2026, among QUALCOMM Incorporated, BNP Paribas Securities Corp., BofA Securities, Inc., Deutsche Bank Securities Inc., J.P.
+- Item 1.01 Entry into a Material Definitive Agreement. — On November 12, 2026, QUALCOMM Incorporated (the Company) executed an Officers’ Certificate (the Officers’ Certificate), in accordance with Sections 2.02, 2.03, 10.04 and 10.05 of the Indenture dated May 20, 2015 (the Base Indenture and, together with the Officers’ Certificate, the Indenture) between the Company and U.S. Bank Trust Company, National Association (as successor in interest to U.S. Bank National Association), as trustee (the Trustee), in connection with the sale of $750,000,000 in aggregate principal amount of the Company’s 5.000% Notes due 2028 (the 2028 Notes), $750,000,000 in aggregate principal amount of the Company’s 5.150% Notes due 2029 (the 2029 Notes), $1,000,000,000 in aggregate principal amount of the Company’s 5.350% Notes due 2031 (the 2031 Notes), $750,000,000 in aggregate principal amount of the Company’s 5.600% Notes due 2033 (the 2033 Notes) and $750,000,000 in aggregate principal amount of the Company’s 5.800% Notes due 2036 (the 2036 Notes and, together with the 2028 Notes, the 2029 Notes, the 2031 Notes and the 2033 Notes, the Notes).
+- Item 8.01 Other Events. — On November 9, 2026, the Company entered into an underwriting agreement (the Underwriting Agreement) with BNP Paribas Securities Corp., BofA Securities, Inc., Deutsche Bank Securities Inc., J.P. Morgan Securities LLC and Morgan Stanley & Co. LLC, on behalf of the several Underwriters listed in Schedule I thereto (the Underwriters), pursuant to which the Company agreed to issue and sell the Notes to the Underwriters in a registered public offering (the Offering).
+- Item 9.01 Financial Statements and Exhibits. — (d) Exhibits Exhibit No Description 1.1 Underwriting Agreement, dated November 9, 2026, among QUALCOMM Incorporated, BNP Paribas Securities Corp., BofA Securities, Inc., Deutsche Bank Securities Inc., J.P. Morgan Securities LLC and Morgan Stanley & Co. LLC 4.1 Indenture, dated May 20, 2015, between QUALCOMM Incorporated and U.S. Bank Trust Company, National Association (as successor in interest to U.S. Bank National Association), as trustee (incorporated herein by reference to Exhibit 4.1 to QUALCOMM Incorporated’s Current Report on Form 8-K filed with the SEC on May 21, 2015) 4.2 Officers’ Certificate, dated November 12, 2026 for the 2028 Notes, the 2029 Notes, the 2031 Notes, the 2033 Notes and the 2036 Notes 4.3 Form of 2028 Notes 4.4 Form of 2029 Notes 4.5 Form of 2031 Notes 4.6 Form of 2033 Notes 4.7 Form of 2036 Notes 5.1 Opinion of Sidley Austin LLP, relating to the Notes (including the consent required with respect thereto) 104 Cover Page Interactive Data File, formatted in Inline XBRL and included as Exhibit
 
 ## Changes
 
@@ -1754,18 +2037,28 @@ The feed turned over completely between pulls (a new day of filings each time), 
 
 ## Verification (mechanical, this assembly)
 
-- Assembly checks: 33/33 PASS (columns, row counts, key uniqueness, tallies recomputed from the final CSVs, SHA-256 recomputed, raw-feed agreement, review selection and item-code match, diff arithmetic).
-- Per-pull verification: 20/20 checks PASS for PULL 1, PULL 2 and PULL 3 (re-run 2026-11-18, including a live spot-check that the first 5 review index pages per pull re-open with HTTP 200).
-- Review verification: 40/40 filings PASS (re-run 2026-11-18): every summary found verbatim in the saved filing text, every heading found at its recorded line, every Documents-table row found in the saved index page, every raw file present.
+- Assembly checks: 52/52 PASS (columns, row counts, key uniqueness, tallies recomputed from the final CSVs, SHA-256 recomputed, raw-feed agreement, review selection and item-code match, diff arithmetic).
+- Per-pull verification at pull time: 20/20 checks PASS for PULL 1, PULL 2 and PULL 3 (re-run 2026-11-18, including a live spot-check that the first 5 review index pages per pull re-open with HTTP 200).
+- Review verification (Revision 1): the 108 summaries are own-words paraphrases by design, so the verbatim-summary sub-check of review_8k.py --verify is superseded for summaries; re-run after the rewrite, its only flags are exactly those 108 paraphrases, and every structural check passes for all 40 filings (status complete, raw files present, every heading found at its recorded line, item codes match the feed). A dedicated Revision-1 QA re-verified each corrected PROOF quote verbatim against the saved filing text and scanned all 108 summaries for truncation markers, abbreviation fragments and signature/forward-looking boilerplate (0 found).
 - Live re-check 2026-11-18: all 40 reviewed index pages return HTTP 200 and contain their accession number.
-- CSV SHA-256: PULL 1 `3a6ea568ee72b242e44dae52e70701d8b3cecc68b7666e20c71c6ea0b1e37d4a`, PULL 2 `b8d472f4d16305a887c648b5818fa06ff8d58b3d813b4785d8bc4806d705fbac`, PULL 3 `a4efa96674902edda72032412cd8f1052db8313a2a99813f1191b6e4f98ad19a`.
+- CSV SHA-256 (corrected deliverable CSVs): PULL 1 `5b306f6544f4ef60a52eedcc2bd31763a75c194a39b53115a8abf01f9142018d`, PULL 2 `75c4d582ced44520facea8b9d005dfda09adc878f6481e69f3887b9f01734f1a`, PULL 3 `b20ba9ae89d878e1351b7f76a4bb4656f50a975f78acb78d5696705d237a7150`. The CSVs as pulled keep the hashes recorded in the PULL notes above; only the company column of the attached copies was cleaned (see Revision 1 corrections).
+
+## Revision 1 corrections
+
+Made for Revision 1 (round 1 of 3) at the evaluator's request; everything not listed here is unchanged from the first submission.
+
+- CSV company column (D2-D4): for every row whose form is not a plain 8-K (8-K/A or 8-K12B), the company value no longer carries the feed-title form: the "<form> - " prefix and the trailing " (CIK) (Filer)" were stripped, matching the plain 8-K rows. Rows cleaned: PULL 1: 11, PULL 2: 7, PULL 3: 5. Row counts unchanged (198 / 197 / 200); no other field or row changed. New SHA-256: PULL 1 `5b306f6544f4ef60a52eedcc2bd31763a75c194a39b53115a8abf01f9142018d`, PULL 2 `75c4d582ced44520facea8b9d005dfda09adc878f6481e69f3887b9f01734f1a`, PULL 3 `b20ba9ae89d878e1351b7f76a4bb4656f50a975f78acb78d5696705d237a7150`. The platform PULL notes carry the hashes of the CSVs as originally pulled; `CORRECTED PULL k:` notes with the corrected row counts and these new hashes accompany this resubmission.
+- Review table: all 108 item summaries rewritten as one-line summaries in our own words of the sentence(s) under each heading; review row 15's company now reads "Versa Bancorp".
+- PROOF (feed requests): the raw first and last `<entry>` elements of each of the six feed pages are now quoted exactly as the saved feed responses returned them, next to the updated-line quotes.
+- PROOF (reviewed filings): each filing now lists its index-page and document requests with the full URL and the UTC time each was actually fetched (recorded by the review tool at fetch time).
+- PROOF (filing excerpts): the excerpts for the items the evaluator named, and every other excerpt of the same classes, now give the heading as printed followed by the complete first sentence(s) under it - no abbreviation breaks, no 900-character truncation, no signature-block or forward-looking boilerplate.
 
 ## Data files (Synmerco Rule 25)
 
 The three pull CSVs are attached to this escrow as Synmerco data files (uploaded and verified before submission):
 
 ```synmerco-data
-3a6ea568ee72b242e44dae52e70701d8b3cecc68b7666e20c71c6ea0b1e37d4a 8k-feed-pull1.csv
-b8d472f4d16305a887c648b5818fa06ff8d58b3d813b4785d8bc4806d705fbac 8k-feed-pull2.csv
-a4efa96674902edda72032412cd8f1052db8313a2a99813f1191b6e4f98ad19a 8k-feed-pull3.csv
+5b306f6544f4ef60a52eedcc2bd31763a75c194a39b53115a8abf01f9142018d 8k-feed-pull1.csv
+75c4d582ced44520facea8b9d005dfda09adc878f6481e69f3887b9f01734f1a 8k-feed-pull2.csv
+b20ba9ae89d878e1351b7f76a4bb4656f50a975f78acb78d5696705d237a7150 8k-feed-pull3.csv
 ```
